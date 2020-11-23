@@ -25,4 +25,4 @@ class Resultado():
                     monto_hasta=self.monto_hasta)
 
     def __repr__(self):
-        return f"<r {self.cuenta}: \nchk_d:{self.cheque_desde}> "
+        return f"<r {self.cuenta}: \nchk_d:{self.cheque_desde},\nchk_h:{self.cheque_hasta} ,\nf1:{self.firmante_1}, \nf2:{self.firmante_2}, \n cond:{self.condicion} ,\nmon_des:{self.monto_desde}, \nmon_has:{self.monto_hasta} >"

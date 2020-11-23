@@ -164,3 +164,15 @@ def search_matches(linea, exp_list, reg_exp_dict):
         if success:
             found_matches[exp] = match
     return found_matches
+
+def search_unique_value(a_buscar,log_fail,acc_id,linea):
+    #permite encontrar un valor en una tupla (patron,valor)
+    if len(a_buscar) > 1:
+        log_fail.error(str(acc_id)+ str(a_buscar)+ str(linea))
+        return False,"estructura incorrecta"
+    else:
+        if not len(a_buscar[0]) == 2:
+            log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
+            return False, "estructura incorrecta"
+        _, val = a_buscar[0]
+        return True, val

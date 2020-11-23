@@ -9,7 +9,7 @@ project_path = os.path.dirname(my_lib_path)
 sys.path.append(project_path)
 log_path = os.path.join(project_path, "logs")
 
-ROTATING_FILE_HANDLER = {"filename": "default.log", "maxBytes": 50000, "backupCount": 5, "mode": "a"}
+ROTATING_FILE_HANDLER = {"filename": "default.log", "maxBytes": 5000000, "backupCount": 5, "mode": "a"}
 
 
 # Default Class for Logging messages about this API

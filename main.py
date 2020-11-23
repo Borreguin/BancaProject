@@ -18,14 +18,16 @@ sys.path.append(project_path)
 from my_lib.util import *
 from constantes import *
 from dto.resultados import Resultado
+
 log = LogDefaultConfig("app_log.log").logger
+log_good = LogDefaultConfig("app_log_good.log").logger
+log_fail = LogDefaultConfig("app_log_fail.log").logger
 
 # global_variables
 sep = "\t"
 output_file = None
 input_file = "condiciones_preprocesadas.csv"
 condiciones_as_csv = "condiciones_as_csv.csv"
-
 
 settings_file = "Config.xlsx"
 path_settings_file = os.path.join(main_path, settings_file)
@@ -44,8 +46,8 @@ def process_df(df):
     for acc_id, df_g in df.groupby(by=[co_cuenta, co_cod_cuenta]):
         lin_total = " ".join(df_g[co_descripcion])
         # encuentra todos los macthces posibles para todas las reglas:
-        found_matches = search_matches(lin_total,exp_list,reg_ex_list)
-
+        found_matches = search_matches(lin_total, exp_list, reg_ex_list)
+        print("*************************ACCOUNT*********************")
         print(f"Account {acc_id}")
         pretty(found_matches, 2)
         [print(li) for li in df_g[co_descripcion]]
@@ -54,26 +56,50 @@ def process_df(df):
             # para interactuar se tiene tupla: (text, valor)
             separadores = [valor for text, valor in found_matches[exp_chk_desde]]
             for separador in separadores:
-                linea_split = lin_total.split(separador)
-                details_matches = search_matches(linea_split,
-                                                 [exp_chk_hasta, exp_monto_desde, exp_monto_hasta,
-                                                  exp_operaciones, exp_f_conjunta, exp_f_individual], reg_ex_list)
-                op_result = Resultado()
-                op_result.cheque_desde = separador
-                # interactuar con matches y llenar resultados:
+                if len(separador)==0:
+                    log_fail.error(str(acc_id)+str(separadores))
+                    continue
+                lineas = lin_total.split(separador)
+                for linea in lineas:
+                    details_matches = search_matches(linea,
+                                                     [exp_chk_hasta, exp_monto_desde, exp_monto_hasta,
+                                                      exp_operaciones, exp_f_conjunta, exp_f_individual], reg_ex_list)
+                    op_result = Resultado()
+                    op_result.cheque_desde = separador
+                    if exp_chk_hasta in details_matches.keys():
+                        aux = details_matches[exp_chk_hasta]
+                        success,respu = search_unique_value(aux,log_fail,acc_id,linea)
+                        if success:
+                            op_result.cheque_hasta = respu
 
-                print(op_result)
+                    if exp_monto_desde in details_matches.keys():
+                        aux = details_matches[exp_monto_desde]
+                        success, respu = search_unique_value(aux,log_fail,acc_id,linea)
+                        if success:
+                            log_good.info(acc_id)
+                            op_result.monto_desde = respu
+
+                    if exp_monto_hasta in details_matches.keys():
+                        aux = details_matches[exp_monto_hasta]
+                        success, respu = search_unique_value(aux, log_fail, acc_id, linea)
+                        if success:
+                            op_result.monto_hasta = respu
+                            log_good.info(acc_id)
+                        print(aux)
+                    # if exp_f_individual in details_matches.keys():
+                    #     op_result.firmante_1 = [valor for text, valor in details_matches[exp_f_individual]]
+                    # if exp_f_conjunta in details_matches.keys():
+                    #     op_result.firmante_2 = [valor for text, valor in details_matches[exp_f_conjunta]]
+                    # if exp_monto_desde in details_matches.keys():
+                    #     op_result.monto_desde = [valor for text, valor in details_matches[exp_monto_desde]]
+                    # if exp_monto_hasta in details_matches.keys():
+                    #     op_result.monto_hasta = [valor for text, valor in details_matches[exp_monto_hasta]]
+                    # interactuar con matches y llenar resultados:
+                    print("---------------------------RESULT---------------------------------")
+                    print(op_result)
 
         # Si se encuentran cheques, entonces tomarlos
         # como separadores
-
-
-
-
-
-
-
-
 
 
 def main():
@@ -101,14 +127,13 @@ def main():
     # df.index = [ix+2 for ix in df.index]
     # df.to_csv("condiciones_preprocesadas.csv", sep=sep)
 
-    process_df(df[1000:2000])
+    process_df(df)
 
 
 if __name__ == "__main__":
     success, msg = main()
     if not success:
         print(f"Error: \n {msg}")
-
 
         # para saber cuantas operaciones se van a realizar:
         # success, match1 = search_match(lin_total, reg_ex_list[exp_chk_desde])
