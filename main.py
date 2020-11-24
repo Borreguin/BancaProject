@@ -15,7 +15,6 @@ output_path = os.path.join(project_path, "output")
 sys.path.append(main_path)
 sys.path.append(project_path)
 
-
 from my_lib.util import *
 from constantes import *
 from dto.resultados import Resultado
@@ -97,9 +96,11 @@ def process_df(df):
                         if name is None:
                             result.observacion = "No fue posible detectar nombre firmante"
                         result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
+                        if result.cuenta == "XXXXXX220 2279":
+                            print("XXXXXX220 2279")
                         result.condicion = operacion
                         attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
-                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_chk_hasta]
+                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
                         for attr, this_exp in zip(attrs, evals):
                             try:
                                 if this_exp in found_matches.keys():
@@ -114,21 +115,21 @@ def process_df(df):
 
                 if operacion == "FIRMAS CONJUNTAS" and exp_f_conjunta in found_matches.keys():
                     if len(found_matches[exp_f_conjunta]) == 1:
-                         partial_names = list()
-                         for partial in found_matches[exp_f_conjunta][0]:
-                             partial = partial.split(" Y ")
-                             partial_names += partial
+                        partial_names = list()
+                        for partial in found_matches[exp_f_conjunta][0]:
+                            partial = partial.split(" Y ")
+                            partial_names += partial
                     else:
-                         partial_names = list()
-                         for g in found_matches[exp_f_conjunta]:
-                             if isinstance(g, tuple):
-                                 partial_names += list(g)
-                             elif isinstance(g, list):
-                                 continue
-                             elif isinstance(g, str):
-                                 partial_names.append(g)
-                             else:
-                                 print("No considerado")
+                        partial_names = list()
+                        for g in found_matches[exp_f_conjunta]:
+                            if isinstance(g, tuple):
+                                partial_names += list(g)
+                            elif isinstance(g, list):
+                                continue
+                            elif isinstance(g, str):
+                                partial_names.append(g)
+                            else:
+                                print("No considerado")
                     # Antigua versión
                     # parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
                     # pablo version:
@@ -136,7 +137,7 @@ def process_df(df):
                     # ordenar en orden de aparecimiento:
                     order_dict = order_by_fisrt_ocurrence(parsed_names, lin_total)
                     sorted_x = sorted(order_dict.items(), key=lambda kv: kv[1])
-                    parsed_names =[ k for k,v  in  sorted_x]
+                    parsed_names = [k for k, v in sorted_x]
 
                     for name in parsed_names[1:]:
                         result = Resultado()
@@ -147,7 +148,7 @@ def process_df(df):
                         result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
                         result.condicion = operacion
                         attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
-                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_chk_hasta]
+                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
                         for attr, this_exp in zip(attrs, evals):
                             try:
                                 if this_exp in found_matches.keys():
@@ -160,8 +161,66 @@ def process_df(df):
                         result.secuencial = list(df_g[co_secuencial])
                         resp_final.append(result)
 
+        # caso grupos pequeños:
+        elif len(df_g.index) <= 2:
+            mask = (df_firm[c_0] == acc_id[0]) & (df_firm[c_1] == acc_id[1])
+            df_firm_filter = df_firm[mask]
+            parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
+
+            order_dict = order_by_fisrt_ocurrence(parsed_names, lin_total)
+            sorted_x = sorted(order_dict.items(), key=lambda kv: kv[1])
+            parsed_names = [k for k, v in sorted_x]
+
+            if len(parsed_names) == 1 and parsed_names[0] is None:
+                result.observacion = "No es posible encontrar el firmante"
+            elif len(parsed_names) == 0:
+                result.observacion = "No es posible encontrar el firmante"
+                parsed_names = [None]
+
+            operacion = None
+            firm1 = None
+            if exp_operaciones in found_matches.keys():
+                if "CONJ" in found_matches[exp_operaciones][0]:
+                    operacion = "FIRMAS CONJUNTAS"
+                    firm1 = parsed_names[0]
+                    parsed_names = parsed_names[1:]
+                elif "NDIV" in found_matches[exp_operaciones][0]:
+                    operacion = "FIRMA INDIVIDUAL"
+                else:
+                    operacion = "AMBIGUO"
+
+            for name in parsed_names:
+                result = Resultado()
+                result.condicion = operacion
+
+                if operacion == "FIRMAS CONJUNTAS":
+                    result.firmante_1 = firm1
+                    result.firmante_2 = name
+                else:
+                    result.firmante_1 = name
+
+                if len(parsed_names) == 1 and parsed_names[0] is None:
+                    result.observacion = "No es posible encontrar el firmante"
+                elif len(parsed_names) == 0:
+                    result.observacion = "No es posible encontrar el firmante"
+                else:
+                    print(parsed_names)
+                attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
+                evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
+                for attr, this_exp in zip(attrs, evals):
+                    try:
+                        if this_exp in found_matches.keys():
+                            value = str(found_matches[this_exp][0][1]).replace(".", "")
+                            setattr(result, attr, value)
+                    except Exception as e:
+                        print("problema")
+                result.fecha_desde = list(df_g[co_fecha_inicio])
+                result.fecha_hasta = list(df_g[co_fecha_inicio])
+                result.secuencial = list(df_g[co_secuencial])
+                resp_final.append(result)
 
     return resp_final
+
 
 def main():
     # file_name = "CONDICIONES.txt"
@@ -198,99 +257,97 @@ def main():
     print_this()
 
 
-
 if __name__ == "__main__":
     result = main()
     print(result)
 
-        # para saber cuantas operaciones se van a realizar:
-        # success, match1 = search_match(lin_total, reg_ex_list[exp_chk_desde])
-        # success, match2 = search_match(lin_total, reg_ex_list[exp_chk_hasta])
-        # success, match3 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
-        # success, match4 = search_match(lin_total, reg_ex_list[exp_monto_desde])
-        # success, match5 = search_match(lin_total, reg_ex_list[exp_monto_hasta])
-        # success, match6 = search_match(lin_total, reg_ex_list[exp_f_individual])
-        # success, match7 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
-        # success, match8 = search_match(lin_total, reg_ex_list[exp_operaciones])
-        # t_p = [match1, match2, match3, match4, match5, match6, match7, match8]
-        # t_p = "\n".join([str(t) for t in t_p])
+    # para saber cuantas operaciones se van a realizar:
+    # success, match1 = search_match(lin_total, reg_ex_list[exp_chk_desde])
+    # success, match2 = search_match(lin_total, reg_ex_list[exp_chk_hasta])
+    # success, match3 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
+    # success, match4 = search_match(lin_total, reg_ex_list[exp_monto_desde])
+    # success, match5 = search_match(lin_total, reg_ex_list[exp_monto_hasta])
+    # success, match6 = search_match(lin_total, reg_ex_list[exp_f_individual])
+    # success, match7 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
+    # success, match8 = search_match(lin_total, reg_ex_list[exp_operaciones])
+    # t_p = [match1, match2, match3, match4, match5, match6, match7, match8]
+    # t_p = "\n".join([str(t) for t in t_p])
 
+# if exp_f_conjunta in found_matches.keys():
+#     parsed_names = parse_to_complete_names(found_matches[exp_f_conjunta][0], list(df_firm_filter[co_nombre]))
+#     if any([True for p in parsed_names if p is None]):
+#         print("firmantes no coincidentes")
+#     else:
+#         print(parsed_names)
 
- # if exp_f_conjunta in found_matches.keys():
-                #     parsed_names = parse_to_complete_names(found_matches[exp_f_conjunta][0], list(df_firm_filter[co_nombre]))
-                #     if any([True for p in parsed_names if p is None]):
-                #         print("firmantes no coincidentes")
-                #     else:
-                #         print(parsed_names)
+# print(lin_total)
 
-                # print(lin_total)
+# if exp_chk_desde in found_matches.keys():
+#     if not len(found_matches[exp_operaciones]) == len(found_matches[exp_chk_desde]):
+#         continue
+#     # found_matches[exp_chk_desde] es la lista de coincidencias de exp_chk_desde
+#     # para interactuar se tiene tupla: (text, valor)
+#     separadores = [valor for text, valor in found_matches[exp_chk_desde]]
+#     for separador in separadores:
+#         if len(separador)==0:
+#             log_fail.error(str(acc_id)+str(separadores))
+#             continue
+#         if len(found_matches[exp_operaciones])==1:
+#             lineas = [lin_total]
+#         else:
+#             lineas = lin_total.split(separador)
+#
+#         for linea in lineas:
+#             details_matches = search_matches(linea,
+#                                              [exp_chk_hasta, exp_monto_desde, exp_monto_hasta,
+#                                               exp_operaciones, exp_f_conjunta, exp_f_individual], reg_ex_list)
+#             op_result = Resultado()
+#             op_result.cheque_desde = separador
+#             if exp_chk_hasta in details_matches.keys():
+#                 aux = details_matches[exp_chk_hasta]
+#                 success,respu = search_unique_value(aux,log_fail,acc_id,linea)
+#                 if success:
+#                     op_result.cheque_hasta = respu
+#
+#             if exp_monto_desde in details_matches.keys():
+#                 aux = details_matches[exp_monto_desde]
+#                 success, respu = search_unique_value(aux,log_fail,acc_id,linea)
+#                 if success:
+#                     log_good.info(acc_id)
+#                     op_result.monto_desde = respu
+#
+#             if exp_monto_hasta in details_matches.keys():
+#                 aux = details_matches[exp_monto_hasta]
+#                 success, respu = search_unique_value(aux, log_fail, acc_id, linea)
+#                 if success:
+#                     op_result.monto_hasta = respu
+#                     log_good.info(acc_id)
+#
+#             if exp_f_individual in details_matches.keys():
+#                 aux = details_matches[exp_f_individual]
+#                 success, respu = search_unique_value_individual(aux, log_fail, acc_id, linea)
+#                 if success:
+#                     op_result.firmante_1 = respu
+#                     log_good.info(acc_id)
+#
+#             if exp_operaciones in details_matches.keys():
+#                 aux = details_matches[exp_operaciones]
+#                 success, respu = search_unique_value_individual(aux, log_fail, acc_id, linea)
+#                 if success:
+#                     op_result.condicion = respu
+#                     log_good.info(acc_id)
+#
+#             # if exp_f_individual in details_matches.keys():
+#             #     op_result.firmante_1 = [valor for text, valor in details_matches[exp_f_individual]]
+#             # if exp_f_conjunta in details_matches.keys():
+#             #     op_result.firmante_2 = [valor for text, valor in details_matches[exp_f_conjunta]]
+#             # if exp_monto_desde in details_matches.keys():
+#             #     op_result.monto_desde = [valor for text, valor in details_matches[exp_monto_desde]]
+#             # if exp_monto_hasta in details_matches.keys():
+#             #     op_result.monto_hasta = [valor for text, valor in details_matches[exp_monto_hasta]]
+#             # interactuar con matches y llenar resultados:
+#             print("---------------------------RESULT---------------------------------")
+#             print(op_result)
 
-        # if exp_chk_desde in found_matches.keys():
-        #     if not len(found_matches[exp_operaciones]) == len(found_matches[exp_chk_desde]):
-        #         continue
-        #     # found_matches[exp_chk_desde] es la lista de coincidencias de exp_chk_desde
-        #     # para interactuar se tiene tupla: (text, valor)
-        #     separadores = [valor for text, valor in found_matches[exp_chk_desde]]
-        #     for separador in separadores:
-        #         if len(separador)==0:
-        #             log_fail.error(str(acc_id)+str(separadores))
-        #             continue
-        #         if len(found_matches[exp_operaciones])==1:
-        #             lineas = [lin_total]
-        #         else:
-        #             lineas = lin_total.split(separador)
-        #
-        #         for linea in lineas:
-        #             details_matches = search_matches(linea,
-        #                                              [exp_chk_hasta, exp_monto_desde, exp_monto_hasta,
-        #                                               exp_operaciones, exp_f_conjunta, exp_f_individual], reg_ex_list)
-        #             op_result = Resultado()
-        #             op_result.cheque_desde = separador
-        #             if exp_chk_hasta in details_matches.keys():
-        #                 aux = details_matches[exp_chk_hasta]
-        #                 success,respu = search_unique_value(aux,log_fail,acc_id,linea)
-        #                 if success:
-        #                     op_result.cheque_hasta = respu
-        #
-        #             if exp_monto_desde in details_matches.keys():
-        #                 aux = details_matches[exp_monto_desde]
-        #                 success, respu = search_unique_value(aux,log_fail,acc_id,linea)
-        #                 if success:
-        #                     log_good.info(acc_id)
-        #                     op_result.monto_desde = respu
-        #
-        #             if exp_monto_hasta in details_matches.keys():
-        #                 aux = details_matches[exp_monto_hasta]
-        #                 success, respu = search_unique_value(aux, log_fail, acc_id, linea)
-        #                 if success:
-        #                     op_result.monto_hasta = respu
-        #                     log_good.info(acc_id)
-        #
-        #             if exp_f_individual in details_matches.keys():
-        #                 aux = details_matches[exp_f_individual]
-        #                 success, respu = search_unique_value_individual(aux, log_fail, acc_id, linea)
-        #                 if success:
-        #                     op_result.firmante_1 = respu
-        #                     log_good.info(acc_id)
-        #
-        #             if exp_operaciones in details_matches.keys():
-        #                 aux = details_matches[exp_operaciones]
-        #                 success, respu = search_unique_value_individual(aux, log_fail, acc_id, linea)
-        #                 if success:
-        #                     op_result.condicion = respu
-        #                     log_good.info(acc_id)
-        #
-        #             # if exp_f_individual in details_matches.keys():
-        #             #     op_result.firmante_1 = [valor for text, valor in details_matches[exp_f_individual]]
-        #             # if exp_f_conjunta in details_matches.keys():
-        #             #     op_result.firmante_2 = [valor for text, valor in details_matches[exp_f_conjunta]]
-        #             # if exp_monto_desde in details_matches.keys():
-        #             #     op_result.monto_desde = [valor for text, valor in details_matches[exp_monto_desde]]
-        #             # if exp_monto_hasta in details_matches.keys():
-        #             #     op_result.monto_hasta = [valor for text, valor in details_matches[exp_monto_hasta]]
-        #             # interactuar con matches y llenar resultados:
-        #             print("---------------------------RESULT---------------------------------")
-        #             print(op_result)
-
-        # Si se encuentran cheques, entonces tomarlos
-        # como separadores
+# Si se encuentran cheques, entonces tomarlos
+# como separadores

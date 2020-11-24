@@ -220,6 +220,8 @@ def find_strict_of_them(to_check, reference):
     if isinstance(to_check, str):
         to_check = to_check.split(" ")
     for w in to_check:
+        if len(w) < 3:
+            continue
         if w in reference:
             n += 1
     return n >= len(to_check)/2

@@ -16,6 +16,8 @@ output_path = os.path.join(project_path, "output")
 sys.path.append(main_path)
 sys.path.append(project_path)
 
+heads = ["secuencial","cheque_desde","cheque_hasta","firmante_1" ,"firmante_2","condicion", "fecha_desde","fecha_hasta","monto_desde", "monto_hasta","observacion"]
+
 from my_lib.util import *
 from constantes import *
 from dto.resultados import Resultado
@@ -76,7 +78,7 @@ def print_this():
         log.info(f"---> Firmantes:")
         log.info(df_firm_filter[co_nombre].to_string(index=False))
         log.info(f"---> Result:")
-        log.info(df_g.to_string(index=False))
+        log.info(df_g[heads].to_string(index=False))
 
 
 
