@@ -1,0 +1,875 @@
+
+-------------> Account: XXXXXX022 61655
+co_secuencial
+1    F. INDIVIDUALES + SELLO                                                                                                                        
+2    ALFREDO DASSUM AIVAS Y ALBERTO DASSUN AIVAS FIRMARAN DESDE CHEQUE 5352                                                                         
+3    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ECUACOTTON S.A.                   
+ FRANCISCO JOSE DASSUM AIVAS       
+ ALFREDO ENRIQUE DASSUM AIVAS      
+ ALBERTO FRANY ANTONIO DASSUM AIVAS
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX022 61655          5352     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['10/02/2013', '10/02/2013', '09/26/2014']  ['10/02/2013', '10/02/2013', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX033 187460
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                          
+2    ANDRES RIZZO REYES, MARIA JOSE RIZZO REYES, FRANCISCO RIZZO REYES Y FRANCISCO RIZZO PASTOR FIRMAN DESDE CH.22
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MARIA JOSE RIZZO REYES        
+ ANDRES HERNAN RIZZO REYES     
+ FRANCISCO JOSE RIZZO REYES    
+ FABIAN MARCELO PRIETO BOWEN   
+ FRANCISCO PABLO RIZZO PASTOR  
+ FRANCISCO JOSE RIZZO BAQUERIZO
+ JACINTO VICENTE VELEZ ENRIQUEZ
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                    firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX033 187460            22     999999999  FRANCISCO PABLO RIZZO PASTOR         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['05/23/2017', '11/08/2019']  ['05/23/2017', '11/08/2019']         NaN
+ XXXXXX033 187460            22     999999999        MARIA JOSE RIZZO REYES         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['05/23/2017', '11/08/2019']  ['05/23/2017', '11/08/2019']         NaN
+ XXXXXX033 187460            22     999999999    FRANCISCO JOSE RIZZO REYES         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['05/23/2017', '11/08/2019']  ['05/23/2017', '11/08/2019']         NaN
+
+-------------> Account: XXXXXX052 191744
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                   
+2    MARIA ZURITA CAMPOS, MELISSA CAMPOS MORI, FABIAN CAMPOS AGUIRRE Y JUAN ARIAS BURNEO FIRMAN DESDE CH.51
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JUAN CARLOS ARIAS BURNEO      
+ MARIA JOSE ZURITA CAMPOS      
+ MELISSA FERNANDA CAMPOS MORI  
+ FABIAN FERNANDO CAMPOS AGUIRRE
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                      firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX052 191744            51     999999999        JUAN CARLOS ARIAS BURNEO         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['12/18/2017', '07/23/2019']  ['12/18/2017', '07/23/2019']         NaN
+ XXXXXX052 191744            51     999999999        MARIA JOSE ZURITA CAMPOS         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['12/18/2017', '07/23/2019']  ['12/18/2017', '07/23/2019']         NaN
+ XXXXXX052 191744            51     999999999    MELISSA FERNANDA CAMPOS MORI         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['12/18/2017', '07/23/2019']  ['12/18/2017', '07/23/2019']         NaN
+ XXXXXX052 191744            51     999999999  FABIAN FERNANDO CAMPOS AGUIRRE         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['12/18/2017', '07/23/2019']  ['12/18/2017', '07/23/2019']         NaN
+
+-------------> Account: XXXXXX056 38291
+co_secuencial
+1    F.INDIVIDUALES                                                                                                                                  
+2    DESDE CH. 9.881 SON VOUCHER  VERDE, CENTRO LOGO  BB, LLEVAN DIG/VERIF. A TRASLUZ FIGURAS FORMANDO ROMBOS X TODO EL CH... ANTES ERAN CH. NORMALES
+3    CUENTA CON SERVICIO DE PREAVISO DE CHEQUES                                                                                                      
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ TERESA JOSEFA NUQUES PARRA  
+ ANDRES EDUARDO GUZMAN NUQUES
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX056 38291          9881     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['08/21/2001', '09/03/2010', '08/14/2007']  ['08/21/2001', '09/03/2010', '08/14/2007']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX084 54446
+co_secuencial
+1    F. INDIVIDUAL.. EMPEZARA A FIRMAR CON SELLO DESDE EL CH. 60                                                                                    
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ CONSTRUDELTA S.A.                   
+ LORENA ERNESTINA MARIDUEÑA PESCAROLO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX084 54446            60     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['09/23/2003', '09/26/2014']  ['09/23/2003', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX089 118530
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                         
+2    GUIDO JALIL RIPALDA, VIVIANA JALIL RIPALDA, JORGE JALIL RIPALDA  Y  GUIDO JALIL TREJO FIRMARAN DESDE CH.2394
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ GUIDO FLAVIO JALIL PERNA   
+ GUIDO ALEX JALIL RIPALDA   
+ JORGE LUIS JALIL RIPALDA   
+ GUIDO FAUSTO JALIL TREJO   
+ VIVIANA MARIA JALIL RIPALDA
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX089 118530          2394     999999999  GUIDO FAUSTO JALIL TREJO         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['06/20/2011', '01/18/2016']  ['06/20/2011', '01/18/2016']         NaN
+
+-------------> Account: XXXXXX101 49383
+co_secuencial
+1    F. INDIVIDUAL...DESDE CH. 1.450 SIN SELLO.... ANTES ERA + SELLO  ASETEC  FIRMA AUTORIZADA                                                      
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ELOY ABRAHAN JR NUÑEZ SANTANA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX101 49383          1450     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['01/25/2006', '09/26/2014']  ['01/25/2006', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX111 26576
+co_secuencial
+1    FIRMAS INDIVIDUALES + SELLO                                                                                                                    
+2    RAMON VELEZ VELEZ Y SONIA VELEZ VELEZ FIRMARAN DESDE CH.6762                                                                                   
+3    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ SONIA FABIOLA VELEZ VELEZ                         
+ RAMON FERNANDO VELEZ VELEZ                        
+ TERESA BEATRIZ VELEZ VELEZ                        
+ RAVELCA S.A. AGENCIA ASESORA PRODUCTORA DE SEGUROS
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                 firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX111 26576          6762     999999999  SONIA FABIOLA VELEZ VELEZ         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['04/18/2000', '09/05/2014', '09/26/2014']  ['04/18/2000', '09/05/2014', '09/26/2014']         NaN
+
+-------------> Account: XXXXXX112 177974
+co_secuencial
+1    FIRMAS INDIVIDUALES: GIANELLA VELIZ Y  MARIA QUINTANA SIN LIMITE DE MONTO, CARLOS INTRIAGO HASTA $3000.
+2    MARIA QUINTANA MORAN  Y  CARLOS INTRIAGO RUGEL FIRMARAN DESDE CH.9                                     
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MARIA GRACIELA QUINTANA MORAN
+ GIANELLA MARIA VELIZ QUINTANA
+ CARLOS ALBERTO INTRIAGO RUGEL
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                     firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX112 177974             9     999999999  CARLOS ALBERTO INTRIAGO RUGEL         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['05/18/2016', '05/18/2016']  ['05/18/2016', '05/18/2016']         NaN
+
+-------------> Account: XXXXXX118 25646
+co_secuencial
+1    FIRMAS INDIVIDUALES Y SELLO SECO. JANETH FRANCO SOLO FIRMA EN N/D. DE ROL....HASTA CH.13077 UTILIZARA SELLO..DESDE CH.13078 SE MANEJARA SIN SELLO
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques  
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ PROCESADORA MEJIA S.A.          
+ JANET ELENA FRANCO CHANCAY      
+ VINICIO ALFREDO MEJIA MEDINA    
+ VINICIO ALFREDO MEJIA PIMENTEL  
+ AMALIA BETSABETH MACIAS MOSQUERA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX118 25646         13078         13077        NaN         NaN  FIRMA INDIVIDUAL            0       13077     [1, 2]  ['08/20/2013', '09/26/2014']  ['08/20/2013', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX125 89964
+co_secuencial
+1    DESDE CH. 25 F. INDIVIDUALES                                                                                        
+2    HASTA EL CH. 24 ERAN FIRMAS DE CONJUNTAS DE ROBERT SECAIRA O CECILIA ARIAS  "CON"  SUSANA RECALDE O KLEBER CERVANTES
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ CECILIA MARIA ARIAS QUINTANA 
+ ROBERT ERNESTO SECAIRA JASMEN
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX125 89964            25            24        NaN         NaN  FIRMA INDIVIDUAL            0          24     [1, 2]  ['09/17/2009', '07/10/2009']  ['09/17/2009', '07/10/2009']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX127 30258
+co_secuencial
+1    F. INDIVIDUALES + SELLO                                                                                                                        
+2    CECILIA CHALE NO FIRMA DEL CH. 1.958 AL 2.242, ANTES Y DESPUES DE ESTE RANGO SI FIRMA                                                          
+3    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MARIO HOOVER ROSERO MALLEA          
+ CECILIA GRACIELA CHALE GARCIA       
+ INGENIERIA  DE LA TIERRA S.A. INTISA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX127 30258          1958          2242        NaN         NaN  FIRMA INDIVIDUAL            0        2242  [1, 2, 3]  ['07/28/2006', '10/23/2006', '09/26/2014']  ['07/28/2006', '10/23/2006', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX192 191945
+co_secuencial
+1    FIRMAS INDIVIDUALES: RICHARD VILLAGRAN "Y" ROSA MUECKAY MONTO ILIMITADO // MILTON FREIRE TORRES HASTA $20.000,00
+2    MILTON FREIRE TORRES Y ROSA MUECKAY MORALES FIRMAN DESDE CH.1                                                   
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ROSA ELENA MUECKAY MORALES    
+ RICHARD AUGUSTO VILLAGRAN     
+ MILTON FRANCISCO FREIRE TORRES
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                  firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX192 191945             1     999999999  ROSA ELENA MUECKAY MORALES         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['03/15/2018', '03/15/2018']  ['03/15/2018', '03/15/2018']         NaN
+
+-------------> Account: XXXXXX212 45997
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                
+2    MARLON LAMA VALVERDE, VALERIA LAMA RODRIGUEZ, ALEJANDRA LAMA RODRIGUEZ Y MATIAS LAMA RODRIGUEZ FIRMAN DESDE CH.2590
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MATIAS LAMA RODRIGUEZ         
+ VALERIA LAMA RODRIGUEZ        
+ ALEJANDRA LAMA RODRIGUEZ      
+ MARLON ALFREDO LAMA VALVERDE  
+ MARIA LUCIA RODRIGUEZ QUINTERO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                    firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX212 45997          2590     999999999         MATIAS LAMA RODRIGUEZ         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['04/05/2002', '07/20/2020']  ['04/05/2002', '07/20/2020']         NaN
+ XXXXXX212 45997          2590     999999999  MARLON ALFREDO LAMA VALVERDE         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['04/05/2002', '07/20/2020']  ['04/05/2002', '07/20/2020']         NaN
+
+-------------> Account: XXXXXX220 2279
+co_secuencial
+23    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+26    FIRMAS INDIVIDUALES HASTA $1,000,000                                                                                                           
+27    SANTIAGO TERAN DAMMER, HECTOR RAMIRO PEREZ Y GABRIEL TAMAYO MONSALVE FIRMAN DESDE CH. 41525                                                    
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ HECTOR RAMIRO PEREZ            
+ OTELO & FABELL S.A.            
+ GABRIEL TAMAYO MONSALVE        
+ SANTIAGO FRANCISCO TERAN DAMMER
+---> Result:
+         cuenta  cheque_desde  cheque_hasta               firmante_1  firmante_2         condicion  monto_desde monto_hasta    secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX220 2279         41525     999999999                      NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [23, 26, 27]  ['09/26/2014', '08/06/2018', '08/06/2018']  ['09/26/2014', '08/06/2018', '08/06/2018']  No fue posible detectar nombre firmante
+ XXXXXX220 2279         41525     999999999  GABRIEL TAMAYO MONSALVE         NaN  FIRMA INDIVIDUAL            0   ilimitado  [23, 26, 27]  ['09/26/2014', '08/06/2018', '08/06/2018']  ['09/26/2014', '08/06/2018', '08/06/2018']                                      NaN
+ XXXXXX220 2279         41525     999999999      HECTOR RAMIRO PEREZ         NaN  FIRMA INDIVIDUAL            0   ilimitado  [23, 26, 27]  ['09/26/2014', '08/06/2018', '08/06/2018']  ['09/26/2014', '08/06/2018', '08/06/2018']                                      NaN
+
+-------------> Account: XXXXXX246 55657
+co_secuencial
+1    F. INDIVIDUALES (JULIO SALAZAR SIEMPRE FIRMARA EN CONJUNTO CON ACACIAS ZAMBRANO O ARMANDO MEJIA DESDE EL CH. 12)
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JULIO CESAR SALAZAR ENGRACIA 
+ ACACIAS MARITZA ZAMBRANO VERA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX246 55657            12     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['10/28/2003']  ['10/28/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX291 41110
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                            
+5    GAD CZARNINSKI SHEFI "Y" YAEL CZARNINSKI SHEFI FIRMAN DESDE CH. 1.175                                                                          
+6    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ BRIKO S. A.                  
+ GAD CZARNINSKI SHEFI         
+ YAEL CZARNINSKI SHEFI        
+ JOHNY JACOBO CZARNINSKI BAIER
+---> Result:
+          cuenta  cheque_desde  cheque_hasta            firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX291 41110          1175     999999999  GAD CZARNINSKI SHEFI         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 5, 6]  ['03/20/2017', '09/07/2007', '09/26/2014']  ['03/20/2017', '09/07/2007', '09/26/2014']         NaN
+
+-------------> Account: XXXXXX301 33499
+co_secuencial
+1    F. INDIVIDUALES HASTA $ 1000 PASADO ESTE MONTO FIRMAN CONJUNTAS...VALIDAR FIRMA DE DEREK THOMAS DESDE CHQ#555.
+2    LA FIRMA DE JOSE SANDOVAL ES VALIDA HASTA CH. 569                                                             
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ DEREK THOMAS LAMB                
+ JEAN LOUIS SOLARI MILONE         
+ CARLOS VAN ISSCHOT DE LA PENA    
+ CARLOS AUGUSTO NARANJO LINDAO    
+ JUAN ANTONIO MARTINEZ ILLINGWORTH
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX301 33499           555           569        NaN         NaN  FIRMA INDIVIDUAL            0         569     [1, 2]  ['06/30/2004', '07/09/2004']  ['06/30/2004', '07/09/2004']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX333 30207
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                            
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+3    MAX EDUARDO HUNTER GUZMAN Y MARK STEFANO HUNTER GUZMAN FIRMAN DESDE CH.7409                                                                    
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MAX EDUARDO HUNTER GUZMAN               
+ MARK STEFANO HUNTER GUZMAN              
+ MAX DOUGLAS HUNTER HURTADO              
+ MARIA EUGENIA GUZMAN SOTOMAYOR          
+ COMUNICADORES DEL ECUADOR COMUNIDOR S.A.
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                 firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX333 30207          7409     999999999  MAX EDUARDO HUNTER GUZMAN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['01/03/2001', '09/26/2014', '10/26/2018']  ['01/03/2001', '09/26/2014', '10/26/2018']         NaN
+
+-------------> Account: XXXXXX337 53951
+co_secuencial
+1    F.INDIVIDUAL..... A L E R T A  AL CLIENTE LE HAN FALSIFICADO ANTES LA FIRMA, FIRMA ACTUALIZADA A PARTIR DEL CH. # 118
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ RICARDO ARISTIDES ORTIZ MENDEZ
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX337 53951           118     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['01/15/2004']  ['01/15/2004']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX342 15026
+co_secuencial
+1    FIRMAS INDIVIDUALES.... DESDE CH. 3.501 + SELLO SECO "DEMARCLE CLEMENTE GUALE P./CECILIA BONE"... EN EL CENTRO DEL SELLO  HAY UNA FIGURA
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ CLEMENTE VICTOR GUALE PIBAQUE
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX342 15026          3501     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['12/02/2005']  ['12/02/2005']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX364 21180
+co_secuencial
+1    F/A  INDIVIDUAL EL RESTO EN CONJUNTO SELLO DE PRODUCTOS DOMESTICOS DEL ECUADOR S.A                    
+2    VALIDAR FIRMA DE GEAMIL ADUM HASTA CHQ#2281..VALIDAR FIRMA INDIVIDUAL DE JUAN GUILLAGE  DESDE CHQ#2282
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JORGE YAMIL ADUM CHEDRAHUI                    
+ GILBERTO ANACLETO PALMA HERRERA               
+ JUAN CARLOS GERARDO GUILLAGE MARTINEZ         
+ PRODUCTOS DOMESTICOS DEL ECUADOR S.A. PRODOMEC
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                             firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX364 21180          2282          2281                                    NaN         NaN  FIRMA INDIVIDUAL            0        2281     [1, 2]  ['10/30/1998', '07/08/2004']  ['10/30/1998', '07/08/2004']  No fue posible detectar nombre firmante
+ XXXXXX364 21180          2282          2281  JUAN CARLOS GERARDO GUILLAGE MARTINEZ         NaN  FIRMA INDIVIDUAL            0        2281     [1, 2]  ['10/30/1998', '07/08/2004']  ['10/30/1998', '07/08/2004']                                      NaN
+
+-------------> Account: XXXXXX391 39117
+co_secuencial
+1    DESDE CH. 301 JUAN HIDALGO Y CRISTINA HUERTA F. INDIVIDUALES ILIMITADAS.... FIRMA DE IRINA BALSECA SIEMPRE EN CONJUNTO CON J. HIDALGO O C. HUERTA HASTA $400
+2    HASTA CH. 300 ERAN FIRMA "C" CON FIRMAS "B" HASTA $400,FIRMAS "B" CONJUNTAS ILIMITADAS                                                                      
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MARIA CRISTINA HUERTA ARCE  
+ JUAN ANTONIO HIDALGO JIMENEZ
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX391 39117           301           300        NaN         NaN  FIRMA INDIVIDUAL            0         300     [1, 2]  ['03/10/2010', '08/22/2001']  ['03/10/2010', '08/22/2001']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX392 103295
+co_secuencial
+1    FIRMAS INDIVIDUALES HASTA $999.999                                                                                                                 
+3    EN CASO DE PRESENTARSE AL COBRO EL CH.6612 COMUNICARSE INMEDIATAMENTE CON LA OFICIAL DE CUENTA                                                     
+4    JULIO AUGUSTO AGUIRRE ROMAN "Y" JUAN EDUARDO AGUIRRE ROMAN "Y" ROBERTO ANDRES AGUIRRE ROMAN "Y" LEONARDO JOFFRE LEON ORELLANA FIRMAN DESDE CH. 6651
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JUAN EDUARDO AGUIRRE ROMAN   
+ JULIO AUGUSTO AGUIRRE ROMAN  
+ ROBERTO ANDRES AGUIRRE ROMAN 
+ LEONARDO JOFFRE LEON ORELLANA
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                     firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX392 103295          6651     999999999  LEONARDO JOFFRE LEON ORELLANA         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 3, 4]  ['06/18/2020', '06/04/2020', '06/18/2020']  ['06/18/2020', '06/04/2020', '06/18/2020']         NaN
+
+-------------> Account: XXXXXX422 19793
+co_secuencial
+1    F.INDIVIDUALES + SELLO                                                                                  
+2    A PARTIR DEL CH. 19483 SOLO SERAN VALIDAS LAS FIRMAS DE GLADYS AVILES Y LAURA OLAYA Y DE MANERA CONJUNTA
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ COSTASUR S.A.                    
+ LAURA JANETH OLAYA LOZADA        
+ GLADYS KATIUSKA AVILES CANDELARIO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX422 19793         19483     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['11/07/2002', '08/21/2003']  ['11/07/2002', '08/21/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX424 13723
+co_secuencial
+1    DESDE EL CH. 5.166 SOLO FIRMARA FERNANDO CEVALLOS, NO LLEVA SELLO...LAS FIRMAS ANTERIORES SOLO FIRMAN HASTA CH. 5165 SON F. INDIVIDUAL CON SELLO
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ INMOBILIARIA EMET S.A.      
+ LUIS FERNANDO CEVALLOS ORTIZ
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX424 13723          5166          5165        NaN         NaN  FIRMA INDIVIDUAL            0        5165        [1]  ['06/18/2003']  ['06/18/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX479 21483
+co_secuencial
+1    FIRMAS INDIVIDUALES FIRMAS -A-. FIR. CONJUNTO FIRMAS B. Y SELLO                                                                                                                                                                                                                                                
+2    DEL CH. 272 SON CH. VOUCHER VERDE-BEIGE CENTRO LOGO BB MICROLINEAS ONDULADAS A TRASLUZ PALABRA SEGURIDAD...ANTES ERAN                                                                                                                                                                                          
+3    CH. VOUCHER, DE FONDO LINEAS ONDULADAS COLOR CELESTE, CON LUZ U. SE OBSERVA EL No 2001, VARIOS CANDADOS Y LA PALABRA PAPEL  SEGURIDAD FORMANDO ROMBOS UNIDOS ENTRE SI..EN LA SGTE CONDICION... TRAS LUZ (LA PALABRA SEGURIDAD A DOBLE LINEA ENTRE BARRAS) SIN TINTA SANGRANTE PERO ESTA PREAVISADO   (OFFSETEC)
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ WORLDSTORES S.A.               
+ JUAN CARLOS SALAME HOPPE       
+ JULIA TERESA CAMPOZANO ACUNA   
+ MIGUEL ALBERTO MORALES ROMAN   
+ MONICA DIOSELINA SALTOS RUIZ   
+ ANTONIO HONORATO MARQUEZ BERMEO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX479 21483           272     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['06/25/2002', '03/06/2003', '02/24/2003']  ['06/25/2002', '03/06/2003', '02/24/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX501 64909
+co_secuencial
+1    FIRMAS INDIVIDUALES HASTA $1.000.000.00                                                                
+2    MA.LOURDES CORONEL ZAMBRANO, JESSICA SANCHEZ VALDIVIEZO Y ABELARDO GARCIA MENESES FIRMAN DESDE CH. 5377
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ABELARDO JAVIER GARCIA MENESES      
+ MARIA DE LOURDES CORONEL ZAMBRANO   
+ JESSICA DEL ROCIO SANCHEZ VALDIVIEZO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                      firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX501 64909          5377     999999999  ABELARDO JAVIER GARCIA MENESES         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['10/26/2016', '10/26/2016']  ['10/26/2016', '10/26/2016']         NaN
+
+-------------> Account: XXXXXX516 22469
+co_secuencial
+1    FIRMAS INDIVIDUALES.                                                                                                   
+2    FERNANDO XAVIER VALLARINO CARBO, XAVIER ANTONIO VALLARINO CARBO Y CRISTINA MARIA VALLARINO CARBO  FIRMAN DESDE CH.2010.
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ CECILIA MARIA CARBO DONOSO              
+ CRISTINA MARIA VALLARINO CARBO          
+ XAVIER ANTONIO VALLARINO CARBO          
+ FERNANDO XAVIER VALLARINO CARBO         
+ XAVIER IGNACIO VALLARINO MARQUEZ DE LA P
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                      firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX516 22469          2010     999999999  CRISTINA MARIA VALLARINO CARBO         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['01/02/1999', '11/28/2018']  ['01/02/1999', '11/28/2018']         NaN
+
+-------------> Account: XXXXXX540 58352
+co_secuencial
+1    F.INDIVIDUALES                                                                                                                                 
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+3    WILSON SAMANIEGO SERPA Y DANIEL SAMANIEGO PILLAGA FIRMAN DESDE CH 2651                                                                         
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ DANIEL JOSE SAMANIEGO PILLAGA                                
+ WILSON CESARIO SAMANIEGO SERPA                               
+ WILSON FERNANDO SAMANIEGO PILLAGA                            
+ CONSTRUCTORA CONADESA S.A. (CONCRETOS Y AFINES DE ESTRUCTURA)
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                     firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX540 58352          2651     999999999  DANIEL JOSE SAMANIEGO PILLAGA         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['08/06/2004', '09/26/2014', '11/08/2016']  ['08/06/2004', '09/26/2014', '11/08/2016']         NaN
+
+-------------> Account: XXXXXX552 1827
+co_secuencial
+1     FIRMAS INDIVIDUALES HASTA $1.000.000,00                                                                                                        
+16    SANTIAGO FRANCISCO TERAN DAMMER, HECTOR RAMIRO PEREZ "Y" GABRIEL TAMAYO MONSALVE FIRMAN DESDE CH.8343                                          
+17    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ PLAINSA S.A.                   
+ HECTOR RAMIRO PEREZ            
+ GABRIEL TAMAYO MONSALVE        
+ SANTIAGO FRANCISCO TERAN DAMMER
+---> Result:
+         cuenta  cheque_desde  cheque_hasta               firmante_1  firmante_2         condicion  monto_desde monto_hasta   secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX552 1827          8343     999999999  GABRIEL TAMAYO MONSALVE         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 16, 17]  ['08/16/2018', '08/16/2018', '09/26/2014']  ['08/16/2018', '08/16/2018', '09/26/2014']         NaN
+
+-------------> Account: XXXXXX596 32547
+co_secuencial
+1    F. INDIVIDUALES  LA SRA CARMEN GONZALEZ FIRMARA A PARTIR DEL CH. 107..FIRMA DE C.GONZALEZ ACTUALIZADA EL 15/JUNIO/04.
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ EUGENIO VELEZ MATUTE            
+ CARMEN MARLENE GONZALEZ GONZALEZ
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                        firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta observacion
+ XXXXXX596 32547           107     999999999  CARMEN MARLENE GONZALEZ GONZALEZ         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['06/15/2004']  ['06/15/2004']         NaN
+
+-------------> Account: XXXXXX603 22952
+co_secuencial
+1    FIRMAS INDIVIDUALES DE KETTY VALDEZ Y ADRIANA VALDEZ; CATALINA FALQUEZ Y EGDA LETAMENDI FIRMARAN SIEMPRE EN CONJUNTO
+2    CATALINA FALQUEZ Y EGDA LETAMENDI FIRMAN DESDE EL CH. 10.990 Y FIRMARAN HASTA $ 1,500.00                            
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ADRIANA DEL ROCIO VALDEZ LARREA        
+ KETTY ANUNZZIATTA VALDEZ LARREA        
+ EGDA VERONICA DEL PILAR LETAMENDI PEREZ
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                       firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX603 22952         10990     999999999                              NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['01/11/1999', '07/04/2007']  ['01/11/1999', '07/04/2007']  No fue posible detectar nombre firmante
+ XXXXXX603 22952         10990     999999999  KETTY ANUNZZIATTA VALDEZ LARREA         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['01/11/1999', '07/04/2007']  ['01/11/1999', '07/04/2007']                                      NaN
+
+-------------> Account: XXXXXX615 52371
+co_secuencial
+1    F. INDIVIDUAL (EN AUSENCIA DE LOS DEMAS FIRMANTES POR VIAJE AL EXTERIOR FRANCISCO YCAZA G. FIRMARA INDIVIDUAL DESDE CH. 44)
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MIGUEL MOREL REYES           
+ MARIA EUGENIA YCAZA GARCES   
+ FRANCISCO XAVIER YCAZA GARCES
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX615 52371            44     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['06/27/2003']  ['06/27/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX624 15321
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                           
+2    DENISSE GEOVANNA ZURITA CRIOLLO, JENNY MARIELA CASTRO SANCHEZ Y MARIA ISABEL ROSERO ORTIZ FIRMAN DESDE CH.3565
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MARIA ISABEL ROSERO ORTIZ      
+ JENNY MARIELA CASTRO SANCHEZ   
+ DENISSE GEOVANNA ZURITA CRIOLLO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                 firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX624 15321          3565     999999999  MARIA ISABEL ROSERO ORTIZ         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['01/28/2019', '01/28/2019']  ['01/28/2019', '01/28/2019']         NaN
+
+-------------> Account: XXXXXX660 19900
+co_secuencial
+1    F.INDIVIDUAL: WERNER MOELLER FREILE; RESTO FIRMAS EN CONJUNTO                                           
+2    VALIDAR FIRMA DE ELIZABETH MOELLER DESDE CH # 1486 Y LA FIRMA DE MARISOL ORELLANA VALIDA HASTA 18-AGO-03
+3    LA FIRMA DE HENRY RUILOVA ES VALIDA HASTA EL CH. # 1509                                                 
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ WERNER GUSTAVO MOELLER FREILE  
+ WERNER GUSTAVO MOELLER CAMACHO 
+ FANNY CECILIA BASANTES ARELLANO
+ ELIZABETH MARIA MOELLER CAMACHO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                       firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX660 19900          1486          1509                              NaN         NaN  FIRMA INDIVIDUAL            0        1509  [1, 2, 3]  ['08/20/2003', '08/20/2003', '09/29/2003']  ['08/20/2003', '08/20/2003', '09/29/2003']  No fue posible detectar nombre firmante
+ XXXXXX660 19900          1486          1509  FANNY CECILIA BASANTES ARELLANO         NaN  FIRMA INDIVIDUAL            0        1509  [1, 2, 3]  ['08/20/2003', '08/20/2003', '09/29/2003']  ['08/20/2003', '08/20/2003', '09/29/2003']                                      NaN
+
+-------------> Account: XXXXXX662 13922
+co_secuencial
+1    F.INDIVIDUALES: WERNER MOELLER FREILE Y ALEX OLSEN; RESTO FIRMAS EN CONJUNTO + SELLO                                                           
+2    VALIDAR FIRMA DE ELIZABETH MOELLER DESDE CH. # 3925 Y LA FIRMA DE MARISOL ORELLANA VALIDA HASTA 18-AGO-03                                      
+3    LA FIRMA DE HENRY RUILOVA ES VALIDA HASTA EL CH. # 3974                                                                                        
+6    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ALEX HELGE OLSEN PONS                       
+ WERNER GUSTAVO MOELLER FREILE               
+ WERNER GUSTAVO MOELLER CAMACHO              
+ FANNY CECILIA BASANTES ARELLANO             
+ ELIZABETH MARIA MOELLER CAMACHO             
+ PREDIAL E INVERSIONISTA PRIMERO DE MAYO S.A.
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                       firmante_1  firmante_2         condicion  monto_desde monto_hasta    secuencial                                               fecha_desde                                               fecha_hasta                              observacion
+ XXXXXX662 13922          3925          3974                              NaN         NaN  FIRMA INDIVIDUAL            0        3974  [1, 2, 3, 6]  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']  No fue posible detectar nombre firmante
+ XXXXXX662 13922          3925          3974  FANNY CECILIA BASANTES ARELLANO         NaN  FIRMA INDIVIDUAL            0        3974  [1, 2, 3, 6]  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']                                      NaN
+
+-------------> Account: XXXXXX731 56526
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                 
+6    VICTOR ERNESTO ESTRADA SANTISTEVAN, JOSE ADOLFO PINARGOTE ARIAS, CARLA MARISA FERREIRA SANTOS FIRMARAN DESDE CH.5820
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ CARLA MARISA FERREIRA SANTOS          
+ VICTOR ERNESTO ESTRADA SANTISTEVAN    
+ ELISA MARIA ESTRADA FERNANDEZ SALVADOR
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                    firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX731 56526          5820     999999999  CARLA MARISA FERREIRA SANTOS         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 6]  ['05/04/2016', '05/04/2016']  ['05/04/2016', '05/04/2016']         NaN
+
+-------------> Account: XXXXXX741 43893
+co_secuencial
+1    F.INDIVIDUALES... VALIDAR LA FIRMA DE FERNANDO MIRO HASTA CH. 12 APARTIR DEL CH. 13 FIRMARA GALES CHIRIBOGA
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ RICARDO ROGELIO VELA TELLO     
+ GALES GERARDO CHIRIBOGA HURTADO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX741 43893            13            12        NaN         NaN  FIRMA INDIVIDUAL            0          12        [1]  ['06/20/2003']  ['06/20/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX754 65905
+co_secuencial
+1    F. INDIVIDUALES                                                                                                                             
+2    DESDE CH. 526 SON VOUCHER VERDE, CENTRO LOGO BB, A TRASLUZ FIGURAS FORMANDO ROMBOS X TOD EL CH., LLEVAN DIG/VERIF... ANTES ERAN CH. NORMALES
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JULIO CESAR ALVARADO VELEZ    
+ MARIA GLORIA ALARCON ALCIVAR  
+ FRANCISCO JOSE ALARCON ALCIVAR
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX754 65905           526     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['12/07/2005', '02/01/2007']  ['12/07/2005', '02/01/2007']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX774 27820
+co_secuencial
+1    F. INDIVIDUALES.... DESDE EL CH. 527 + SELLO DE "PLASTICOS C. V. FIRMA AUTORIZADA"; A PARTIR DE CH 684 LAS FIRMAS SERAN CONJUNTAS
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MATILDE BENILDA VAQUE VERA     
+ FREDDY MANUEL CASTAÑEDA ASENCIO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX774 27820           527     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['08/28/2003']  ['08/28/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX783 11526
+co_secuencial
+1    FIRMAS INDIVIDUALES... EL SELLO ANTEFIRMA DE PROBALSA C. LTDA. ES VALIDO HASTA CH. 19800,  DESDE CH. 19801 FIRMARAN SIN SELLO                  
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ANGEL DAVID SERENI GRANJA            
+ JUAN ALBERTO MANCHENO CORTEZ         
+ CARLOS ALBERTO LEON PALACIOS         
+ LUIS FERNANDO BURBANO PARODI         
+ PROBALSA, PRODUCTORES DE BALSA C.LTDA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX783 11526         19801         19800        NaN         NaN  FIRMA INDIVIDUAL            0       19800     [1, 2]  ['03/15/2012', '09/26/2014']  ['03/15/2012', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX793 48002
+co_secuencial
+1    FS. INDIVIDUALES...VALIDAR FIRMA DE AMELIA RODRIGUEZ DESDE CHQ#32....DAMIAN FURST ACTUALZIA FIRMA EL 16/ABRIL/04
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ DAMIAN FURST ALVAREZ         
+ MARIA AMELIA RODRIGUEZ PERNAS
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX793 48002            32     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['04/16/2004']  ['04/16/2004']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX807 79487
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                  
+2    JUAN CARLOS TORRES BEJARANO, FERNANDO TORRES BEJARANO, FERNANDO TORRES TRUJILLO FIRMAN DESDE CH. 3026
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JUAN CARLOS TORRES BEJARANO     
+ JUAN MARTIN TORRES BEJARANO     
+ FERNANDO ANTONIO TORRES BEJARANO
+ FERNANDO ANTONIO TORRES TRUJILLO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                        firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX807 79487          3026     999999999  FERNANDO ANTONIO TORRES TRUJILLO         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['05/21/2008', '06/16/2017']  ['05/21/2008', '06/16/2017']         NaN
+
+-------------> Account: XXXXXX848 1655
+co_secuencial
+1    FIRMA INDIVIDUAL J.C.PLAZA P. EL RESTO FIRMA EN CONJUNTO  Y PROTEC                                                                             
+3    A PARTIR DEL CH. 5.502 SE ELIMINA EL SELLO                                                                                                     
+5    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JUAN CARLOS PLAZA PLAZA                       
+ JUAN CARLOS PLAZA LARREA                      
+ RICARDO ANTONIO PLAZA PLAZA                   
+ JORGE GABRIEL MURILLO POLIT                   
+ EDUARDO MANUEL AROSEMENA PLAZA                
+ INDUSTRIAS GRAFICAS ROCAFUERTE, INGRAROCA S.A.
+---> Result:
+         cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta                              observacion
+ XXXXXX848 1655          5502     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 3, 5]  ['04/11/2003', '04/02/2007', '09/26/2014']  ['04/11/2003', '04/02/2007', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX853 47731
+co_secuencial
+1    F. INDIVIDUALES+ SELLO                                                                                                                         
+2    SEBASTIAN CEVALLOS FIRMAN DESDE CH. 351                                                                                                        
+3    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ SEBASTIAN CEVALLOS LARREA                         
+ LUIS ANTONIO JERVIS ARCILA                        
+ RODRIGO ALBERTO CEVALLOS SALVADOR                 
+ REFRIGERACION Y REPUESTOS DEL ECUADOR S.A. REFRISA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                 firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX853 47731           351     999999999  SEBASTIAN CEVALLOS LARREA         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['07/11/2002', '04/21/2011', '09/26/2014']  ['07/11/2002', '04/21/2011', '09/26/2014']         NaN
+
+-------------> Account: XXXXXX877 640
+co_secuencial
+1    DESDE EL CH. 12.601 FIRMAS INDIVIDUALES ... ANTES ERAN FIRMAS *A* INDIVIDUALES. FIRMAS *B* CONJUNTAS.
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JOSE RAFAEL SAMANIEGO PORTILLA 
+ RAUL JOAQUIN SAMANIEGO PALACIOS
+---> Result:
+        cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX877 640         12601     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['03/11/2008']  ['03/11/2008']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX883 24848
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                            
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+3    ESTHER RIVERA TOUMA Y LUIS RIVERA TOUMA FIRMAN DESDE CH.22101                                                                                  
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ LUIS ARTURO RIVERA TOUMA                                      
+ ESTHER UBALDA TOUMA PRIETO                                    
+ ESTHER CRISTINA RIVERA TOUMA                                  
+ INPROFARM COMPAÑIA ECUATORIANA DE PRODUCTOS FARMACEUTICOS S.A.
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX883 24848         22101     999999999  LUIS ARTURO RIVERA TOUMA         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['08/11/2000', '09/26/2014', '01/28/2019']  ['08/11/2000', '09/26/2014', '01/28/2019']         NaN
+
+-------------> Account: XXXXXX896 48923
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                            
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+3    RODRIGO CLOTARIO VELEZ BARBERAN "Y" ROBERT MAGNO VELEZ BARBERAN FIRMAN DESDE CH.8309                                                           
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JORGE ISAAC VELEZ BARBERAN                        
+ ROBERT MAGNO VELEZ BARBERAN                       
+ RODRIGO CLOTARIO VELEZ BARBERAN                   
+ DISTRIBUCIONES ISAAC VELEZ CALDERERO  DISVECA S.A.
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                  firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX896 48923          8309     999999999  JORGE ISAAC VELEZ BARBERAN         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 2, 3]  ['08/22/2002', '09/26/2014', '10/10/2017']  ['08/22/2002', '09/26/2014', '10/10/2017']         NaN
+
+-------------> Account: XXXXXX904 65599
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                            
+3    FRANCISCO LUZARRAGA MENDEZ, MERCEDES LUZARRAGA MENDEZ FIRMAN DESDE CH.1756                                                                     
+4    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ INMOBILIARIA LUZMEN C.A.          
+ FRANCISCO XAVIER LUZARRAGA MENDEZ 
+ MERCEDES PATRICIA LUZARRAGA MENDEZ
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                         firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX904 65599          1756     999999999  FRANCISCO XAVIER LUZARRAGA MENDEZ         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 3, 4]  ['09/26/2014', '10/08/2014', '09/26/2014']  ['09/26/2014', '10/08/2014', '09/26/2014']         NaN
+
+-------------> Account: XXXXXX908 33396
+co_secuencial
+1    F. INDIVIDUALES HASTA $ 1000. PASADO ESTE MONTO FIRMAN CONJUNTAS....VALIDAR FIRMA DE DEREK THOMAS DESDE CHQ#2338.
+2    LA FIRMA DE JOSE SANDOVAL ES VALIDA HASTA EL CH. 2.457                                                           
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ DEREK THOMAS LAMB                
+ JEAN LOUIS SOLARI MILONE         
+ CARLOS VAN ISSCHOT DE LA PENA    
+ CARLOS AUGUSTO NARANJO LINDAO    
+ JUAN ANTONIO MARTINEZ ILLINGWORTH
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX908 33396          2338          2457        NaN         NaN  FIRMA INDIVIDUAL            0        2457     [1, 2]  ['06/30/2004', '07/09/2004']  ['06/30/2004', '07/09/2004']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX915 33397
+co_secuencial
+1    F. INDIVIDUALES HASTA $ 1000 PASADO ESTE MONTO FIRMAN CONJUNTAS...VALIDAR FIRMA DE DEREK THOMAS DESDE CHQ#893
+2    LA FIRMA DE JOSE SANDOVAL ES VALDIA HASTA CH. 948                                                            
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ DEREK THOMAS LAMB                
+ JEAN LOUIS SOLARI MILONE         
+ CARLOS VAN ISSCHOT DE LA PENA    
+ CARLOS AUGUSTO NARANJO LINDAO    
+ JUAN ANTONIO MARTINEZ ILLINGWORTH
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX915 33397           893           948        NaN         NaN  FIRMA INDIVIDUAL            0         948     [1, 2]  ['06/30/2004', '07/09/2004']  ['06/30/2004', '07/09/2004']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX922 33399
+co_secuencial
+1    F. INDIVIDUALES HASTA $1000 PASADO ESTE MONTO FIRMAN CONJUNTAS....VALIDAR FIRMA DE DEREK THOMAS DESDE CHQ#554
+2    LA FIRMA DE JOSE SANDOVAL ES VALIDA HASTA CH. 600                                                            
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ DEREK THOMAS LAMB                
+ JEAN LOUIS SOLARI MILONE         
+ CARLOS VAN ISSCHOT DE LA PENA    
+ CARLOS AUGUSTO NARANJO LINDAO    
+ JUAN ANTONIO MARTINEZ ILLINGWORTH
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX922 33399           554           600        NaN         NaN  FIRMA INDIVIDUAL            0         600     [1, 2]  ['06/30/2004', '07/09/2004']  ['06/30/2004', '07/09/2004']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX928 55350
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                            
+3    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+4    GINA BRAVO GARCIA Y OLINDA PACHECO CAICEDO FIRMAN DESDE CH.7031                                                                                
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ GINA PAOLA BRAVO GARCIA            
+ OLINDA NARCISA PACHECO CAICEDO     
+ RECICLADORES NACIONALES S.A. RENASA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                      firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX928 55350          7031     999999999  OLINDA NARCISA PACHECO CAICEDO         NaN  FIRMA INDIVIDUAL            0   ilimitado  [1, 3, 4]  ['08/26/2003', '09/26/2014', '11/21/2014']  ['08/26/2003', '09/26/2014', '11/21/2014']         NaN
+
+-------------> Account: XXXXXX938 29012
+co_secuencial
+1    FIRMAS INDIVIDUALES... EL SELLO ES VALIDO HASTA CH.311                                                                                         
+2    MARIA LORENA GONZALEZ  Y  MARIA LEONOR GONZALEZ FIRMAN DESDE CH.312                                                                            
+3    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ LABORATORIOS G.M. S.A.      
+ MARIA LEONOR GONZALEZ DAPELO
+ MARIA LORENA GONZALEZ DAPELO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                    firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                                 fecha_desde                                 fecha_hasta observacion
+ XXXXXX938 29012           312           311  MARIA LEONOR GONZALEZ DAPELO         NaN  FIRMA INDIVIDUAL            0         311  [1, 2, 3]  ['09/11/2014', '09/11/2014', '09/26/2014']  ['09/11/2014', '09/11/2014', '09/26/2014']         NaN
+
+-------------> Account: XXXXXX941 67537
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                                                  
+2    FABIAN MARCELO PRIETO BOWEN, FRANCISCO JOSE RIZZO REYES, MARIA JOSE RIZZO REYES Y FRANCISCO JOSE RIZZO BAQUERIZO FIRMAN DESDE CH.1011
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ MARIA JOSE RIZZO REYES        
+ ANDRES HERNAN RIZZO REYES     
+ FRANCISCO JOSE RIZZO REYES    
+ FABIAN MARCELO PRIETO BOWEN   
+ FRANCISCO PABLO RIZZO PASTOR  
+ FRANCISCO JOSE RIZZO BAQUERIZO
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                      firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX941 67537          1011     999999999  FRANCISCO JOSE RIZZO BAQUERIZO         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['02/02/2006', '03/12/2019']  ['02/02/2006', '03/12/2019']         NaN
+ XXXXXX941 67537          1011     999999999     FABIAN MARCELO PRIETO BOWEN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['02/02/2006', '03/12/2019']  ['02/02/2006', '03/12/2019']         NaN
+ XXXXXX941 67537          1011     999999999          MARIA JOSE RIZZO REYES         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['02/02/2006', '03/12/2019']  ['02/02/2006', '03/12/2019']         NaN
+
+-------------> Account: XXXXXX950 1110
+co_secuencial
+1    F.INDIVIDUALES: WERNER MOELLER FREILE Y ALEX OLSEN; RESTO FIRMAS EN CONJUNTO + SELLO                                                           
+3    VALIDAR FIRMA DE ELIZABETH MOELLER DESDE CHEQUE # 2492 Y LA FIRMA DE MARISOL ORELLANA VALIDA HASTA 18-AGO-03                                   
+4    LA FIRMA DE HENRY RUILOVA ES VALIDA HASTA EL CH. #2500                                                                                         
+6    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ALEX HELGE OLSEN PONS          
+ INDUSTRIAL GALPOSA S.A.        
+ WERNER GUSTAVO MOELLER FREILE  
+ WERNER GUSTAVO MOELLER CAMACHO 
+ FANNY CECILIA BASANTES ARELLANO
+ ELIZABETH MARIA MOELLER CAMACHO
+---> Result:
+         cuenta  cheque_desde  cheque_hasta                       firmante_1  firmante_2         condicion  monto_desde monto_hasta    secuencial                                               fecha_desde                                               fecha_hasta                              observacion
+ XXXXXX950 1110          2492          2500                              NaN         NaN  FIRMA INDIVIDUAL            0        2500  [1, 3, 4, 6]  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']  No fue posible detectar nombre firmante
+ XXXXXX950 1110          2492          2500  FANNY CECILIA BASANTES ARELLANO         NaN  FIRMA INDIVIDUAL            0        2500  [1, 3, 4, 6]  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']  ['08/20/2003', '08/20/2003', '09/29/2003', '09/26/2014']                                      NaN
+
+-------------> Account: XXXXXX964 146674
+co_secuencial
+1    DESDE CHEQUE 5 ALBA TIERRA FIRMA INVIDUAL O EN CONJUNTO, JUAN CARLOS HURTADO FIRMA SIEMPRE EN CONJUNTO ANTES ERAN FIRMAS INDIVIDUALES
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ ALBA LEONOR TIERRA TIERRA 
+ JUAN CARLOS HURTADO SALTOS
+---> Result:
+           cuenta  cheque_desde  cheque_hasta                  firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial     fecha_desde     fecha_hasta                              observacion
+ XXXXXX964 146674             5     999999999   ALBA LEONOR TIERRA TIERRA         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['07/02/2013']  ['07/02/2013']                                      NaN
+ XXXXXX964 146674             5     999999999  JUAN CARLOS HURTADO SALTOS         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['07/02/2013']  ['07/02/2013']                                      NaN
+ XXXXXX964 146674             5     999999999                         NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado        [1]  ['07/02/2013']  ['07/02/2013']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX969 24096
+co_secuencial
+1    FIRMAS INDIVIDUALES                                                                                  
+2    SEIDDY MACKLIFF PEÑA, ANA VICTORIA ANCHUNDIA VERA  Y  ARCADIO AMADOR AROSEMENA FIRMARAN DESDE CH.3514
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ SEIDDY SORAYA MACKLIFF PENA         
+ ANA VICTORIA ANCHUNDIA VERA         
+ JUAN GABRIEL VILASECA DE PRATI      
+ MARIA CECILIA VILASECA DE PRATI     
+ ARCADIO ERNESTO AMADOR AROSEMENA    
+ ROSSANA MONTSERRAT VILASECA DE PRATI
+---> Result:
+          cuenta  cheque_desde  cheque_hasta                        firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta observacion
+ XXXXXX969 24096          3514     999999999  ARCADIO ERNESTO AMADOR AROSEMENA         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['05/26/1999', '07/31/2015']  ['05/26/1999', '07/31/2015']         NaN
+
+-------------> Account: XXXXXX971 41824
+co_secuencial
+1    F.INDIVIDUALES DE JORGE APPENZAUER R. Y JORGE APPENZAUER V., EL RESTO F. CONJUN- TAS, + SELLO. FIRMA DE JORGE APPENZAUER V. VALIDA DESDE EL CH. # 165
+2    En cumplimiento de  Resolucion SBS-2014-234 a partir del 26 de Septiembre de 2014, se elimina el uso de sello antefirma para el pago de cheques      
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JORGE ENRIQUE APPENZAUSER VOIGT  
+ RICARDO OLIVER APPENZAUSER VOIGT 
+ JORGE RICARDO APPENZAUSER RUPERTI
+ CAROLINA TERESA APPENZAUSER VOIGT
+ AGRICOLA Y PISCICOLA CAROLYN S.A.
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX971 41824           165     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['03/12/2004', '09/26/2014']  ['03/12/2004', '09/26/2014']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX974 35514
+co_secuencial
+1    F. INDIVIDUALES                                                                                                                                                                    
+2    DEL CH 18.901 SON VOUCHER VERDE CENTRO LOGO BB LLEVAN DIGITO VERIFICADOR A TRASLUZ FIGURAS FORMANDO ROMBO...ANTES ERAN VERDE PARTE INFERIOR BLANCA CENTRO LOGO BB A TRASLUZ  ROMBOS
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ JIMMY MARTIN MONTALVAN             
+ SANTIAGO GABRIEL SALEM KRONFLE     
+ FRANCISCO JAVIER CORNEJO PUIG-MIR  
+ JAIME GABRIEL NUÑEZ DEL ARCO BURGOS
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX974 35514         18901     999999999        NaN         NaN  FIRMA INDIVIDUAL            0   ilimitado     [1, 2]  ['08/21/2001', '09/24/2003']  ['08/21/2001', '09/24/2003']  No fue posible detectar nombre firmante
+
+-------------> Account: XXXXXX977 30969
+co_secuencial
+1    DESDE CH.3525 SERAN F.INDIVIDUALES                                                                                     
+3    HASTA CH.3525 ERA CLAUDIA MUNOZ Y PATRICIA MUNOZ FIRMAS INDIVDUALES... ROCIO RUIZ FIRMARA EN CONJUNTO CON CLAUDIA MUNOZ
+Name: co_descripcion, dtype: object
+---> Firmantes:
+ PATRICIA JAMILE MUNOZ VALENCIA  
+ CLAUDIA ALEXANDRA MUNOZ VALENCIA
+---> Result:
+          cuenta  cheque_desde  cheque_hasta firmante_1  firmante_2         condicion  monto_desde monto_hasta secuencial                   fecha_desde                   fecha_hasta                              observacion
+ XXXXXX977 30969          3525          3525        NaN         NaN  FIRMA INDIVIDUAL            0        3525     [1, 3]  ['07/19/2012', '11/15/2005']  ['07/19/2012', '11/15/2005']  No fue posible detectar nombre firmante

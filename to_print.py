@@ -33,7 +33,7 @@ settings_file = "Config.xlsx"
 path_settings_file = os.path.join(main_path, settings_file)
 
 
-def main():
+def print_this():
 
     # input_path_file = os.path.join(input_path, file_name)
     # output_path_file = os.path.join(input_path, output_file)
@@ -81,7 +81,7 @@ if __name__ == "__main__":
     pd.set_option('display.max_columns', None)
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', -1)
-    result = main()
+    result = print_this()
     print(result)
 
         # para saber cuantas operaciones se van a realizar:
