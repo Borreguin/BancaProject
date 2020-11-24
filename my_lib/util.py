@@ -17,9 +17,11 @@ project_path = os.path.dirname(my_lib_path)
 sys.path.append(project_path)
 log_path = os.path.join(project_path, "logs")
 from my_lib.DefaultLogClass import LogDefaultConfig
+
 log = LogDefaultConfig("utils.log").logger
 
 sep = "\t"
+
 
 def transform_file(input_path_file, output_path_file):
     with open(input_path_file) as fp:
@@ -92,6 +94,7 @@ def read_source_file(path_file, **kwargs):
     except Exception as e:
         return False, None, f"No se puede leer el archivo: {str(e)}"
 
+
 def pre_process_df(df, path_settings_file):
     success, df_set = read_settings(path_settings_file)
     rules, exps = list(df_set[exp_siguiente + "_RULE"]), list(df_set[exp_siguiente + "_EXP"])
@@ -121,7 +124,7 @@ def pre_process_df(df, path_settings_file):
                 try:
                     # se encontro una coincidencia
                     linea_ex = e1.sub("", linea, 1)
-                    linea_next = _df[co_descripcion].iloc[ix+1]
+                    linea_next = _df[co_descripcion].iloc[ix + 1]
                     # limpiando y concatenando la siguiente fila
                     reini = re.compile(r"([\(][\d]{1}[\)]*[\s]*[-]*[>]*)")
                     linea_next = reini.sub("", linea_next, count=1)
@@ -138,7 +141,6 @@ def pre_process_df(df, path_settings_file):
                     msg = f"No se pudo procesar la línea {idx} " + "\n" + linea + f"\n{str(e)}"
                     log.error(msg)
 
-
             if not exp_applied:
                 # no se ha utilizado ninguna regla
                 df_final = df_final.append(df.loc[idx])
@@ -147,12 +149,13 @@ def pre_process_df(df, path_settings_file):
 
 
 def pretty(d, indent=0):
-   for key, value in d.items():
-      print('\t' * indent + str(key))
-      if isinstance(value, dict):
-         pretty(value, indent+1)
-      else:
-         print('\t' * (indent+1) + str(value))
+    for key, value in d.items():
+        print('\t' * indent + str(key))
+        if isinstance(value, dict):
+            pretty(value, indent + 1)
+        else:
+            print('\t' * (indent + 1) + str(value))
+
 
 def search_matches(linea, exp_list, reg_exp_dict):
     # linea es un string
@@ -165,14 +168,40 @@ def search_matches(linea, exp_list, reg_exp_dict):
             found_matches[exp] = match
     return found_matches
 
-def search_unique_value(a_buscar,log_fail,acc_id,linea):
-    #permite encontrar un valor en una tupla (patron,valor)
+
+def search_unique_value(a_buscar, log_fail, acc_id, linea):
+    # permite encontrar un valor en una tupla (patron,valor)
     if len(a_buscar) > 1:
-        log_fail.error(str(acc_id)+ str(a_buscar)+ str(linea))
-        return False,"estructura incorrecta"
+        log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
+        return False, "estructura incorrecta"
     else:
         if not len(a_buscar[0]) == 2:
             log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
             return False, "estructura incorrecta"
         _, val = a_buscar[0]
+        return True, val
+
+
+def search_unique_value_individual(a_buscar, log_fail, acc_id, linea):
+    # permite encontrar un valor en una tupla (patron,valor)
+    if not len(a_buscar) == 1:
+        log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
+        return False, "estructura incorrecta"
+    else:
+        if not len(a_buscar) == 1:
+            log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
+            return False, "estructura incorrecta"
+        val = a_buscar
+        return True, val
+
+def search_unique_value_conjunta(a_buscar, log_fail, acc_id, linea):
+    # permite encontrar un valor en una tupla (patron,valor)
+    if not len(a_buscar) > 2:
+        log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
+        return False, "estructura incorrecta"
+    else:
+        if not len(a_buscar) == 1:
+            log_fail.error(str(acc_id) + str(a_buscar) + str(linea))
+            return False, "estructura incorrecta"
+        val = a_buscar
         return True, val
