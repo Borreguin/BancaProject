@@ -52,6 +52,8 @@ def process_df(df):
         pretty(found_matches, 2)
         [print(li) for li in df_g[co_descripcion]]
         if exp_chk_desde in found_matches.keys():
+            if not len(found_matches[exp_operaciones]) == len(found_matches[exp_chk_desde]):
+                continue
             # found_matches[exp_chk_desde] es la lista de coincidencias de exp_chk_desde
             # para interactuar se tiene tupla: (text, valor)
             separadores = [valor for text, valor in found_matches[exp_chk_desde]]
@@ -59,7 +61,11 @@ def process_df(df):
                 if len(separador)==0:
                     log_fail.error(str(acc_id)+str(separadores))
                     continue
-                lineas = lin_total.split(separador)
+                if len(found_matches[exp_operaciones])==1:
+                    lineas = [lin_total]
+                else:
+                    lineas = lin_total.split(separador)
+
                 for linea in lineas:
                     details_matches = search_matches(linea,
                                                      [exp_chk_hasta, exp_monto_desde, exp_monto_hasta,
@@ -85,7 +91,21 @@ def process_df(df):
                         if success:
                             op_result.monto_hasta = respu
                             log_good.info(acc_id)
-                        print(aux)
+
+                    if exp_f_individual in details_matches.keys():
+                        aux = details_matches[exp_f_individual]
+                        success, respu = search_unique_value_individual(aux, log_fail, acc_id, linea)
+                        if success:
+                            op_result.firmante_1 = respu
+                            log_good.info(acc_id)
+
+                    if exp_operaciones in details_matches.keys():
+                        aux = details_matches[exp_operaciones]
+                        success, respu = search_unique_value_individual(aux, log_fail, acc_id, linea)
+                        if success:
+                            op_result.condicion = respu
+                            log_good.info(acc_id)
+
                     # if exp_f_individual in details_matches.keys():
                     #     op_result.firmante_1 = [valor for text, valor in details_matches[exp_f_individual]]
                     # if exp_f_conjunta in details_matches.keys():
