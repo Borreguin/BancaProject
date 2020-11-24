@@ -107,46 +107,46 @@ def process_df(df):
                         result.secuencial = list(df_g[co_secuencial])
                         resp_final.append(result)
 
-                # if operacion == "FIRMAS CONJUNTAS" and exp_f_conjunta in found_matches.keys():
-                #     if len(found_matches[exp_f_conjunta]) == 1:
-                #          partial_names = list()
-                #          for partial in found_matches[exp_f_conjunta][0]:
-                #              partial = partial.split(" Y ")
-                #              partial_names += partial
-                #     else:
-                #          partial_names = list()
-                #          for g in found_matches[exp_f_conjunta]:
-                #              if isinstance(g, tuple):
-                #                  partial_names += list(g)
-                #              elif isinstance(g, list):
-                #                  continue
-                #              elif isinstance(g, str):
-                #                  partial_names.append(g)
-                #              else:
-                #                  print("No considerado")
-                #
-                #     parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
-                #     for name in parsed_names[1:]:
-                #         result = Resultado()
-                #         result.firmante_1 = parsed_names[0]
-                #         result.firmante_2 = name
-                #         if name is None:
-                #             result.observacion = "No fue posible detectar nombre firmante"
-                #         result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
-                #         result.condicion = operacion
-                #         attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
-                #         evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_chk_hasta]
-                #         for attr, this_exp in zip(attrs, evals):
-                #             try:
-                #                 if this_exp in found_matches.keys():
-                #                     value = str(found_matches[this_exp][0][1]).replace(".", "")
-                #                     setattr(result, attr, value)
-                #             except Exception as e:
-                #                 print("problema")
-                #         result.fecha_desde = list(df_g[co_fecha_inicio])
-                #         result.fecha_hasta = list(df_g[co_fecha_inicio])
-                #         result.secuencial = list(df_g[co_secuencial])
-                #         resp_final.append(result)
+                if operacion == "FIRMAS CONJUNTAS" and exp_f_conjunta in found_matches.keys():
+                    if len(found_matches[exp_f_conjunta]) == 1:
+                         partial_names = list()
+                         for partial in found_matches[exp_f_conjunta][0]:
+                             partial = partial.split(" Y ")
+                             partial_names += partial
+                    else:
+                         partial_names = list()
+                         for g in found_matches[exp_f_conjunta]:
+                             if isinstance(g, tuple):
+                                 partial_names += list(g)
+                             elif isinstance(g, list):
+                                 continue
+                             elif isinstance(g, str):
+                                 partial_names.append(g)
+                             else:
+                                 print("No considerado")
+
+                    parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
+                    for name in parsed_names[1:]:
+                        result = Resultado()
+                        result.firmante_1 = parsed_names[0]
+                        result.firmante_2 = name
+                        if name is None:
+                            result.observacion = "No fue posible detectar nombre firmante"
+                        result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
+                        result.condicion = operacion
+                        attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
+                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_chk_hasta]
+                        for attr, this_exp in zip(attrs, evals):
+                            try:
+                                if this_exp in found_matches.keys():
+                                    value = str(found_matches[this_exp][0][1]).replace(".", "")
+                                    setattr(result, attr, value)
+                            except Exception as e:
+                                print("problema")
+                        result.fecha_desde = list(df_g[co_fecha_inicio])
+                        result.fecha_hasta = list(df_g[co_fecha_inicio])
+                        result.secuencial = list(df_g[co_secuencial])
+                        resp_final.append(result)
 
                 # if exp_f_conjunta in found_matches.keys():
                 #     parsed_names = parse_to_complete_names(found_matches[exp_f_conjunta][0], list(df_firm_filter[co_nombre]))
@@ -257,8 +257,8 @@ def main():
     result = process_df(df)
     to_save = [r.to_dict() for r in result]
     df_save = pd.DataFrame(to_save)
-    df_save.drop_duplicates(subset=["cuenta", "firmante_1"], keep='first', inplace=True)
-    df_save.to_excel("Operaciones_individuales.xlsx")
+    # df_save.drop_duplicates(subset=["cuenta", "firmante_2"], keep='first', inplace=True)
+    df_save.to_excel("todas_las_operaciones.xlsx")
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ from constantes import *
 from dto.resultados import Resultado
 from my_lib.DefaultLogClass import DefaultConfig
 
-log = DefaultConfig("result_conjuntas.log").logger
+log = DefaultConfig("todas_las_operaciones.log").logger
 
 # global_variables
 sep = "\t"
@@ -46,7 +46,7 @@ def main():
     # set first column as index
     df.set_index([co_secuencial], inplace=True)
 
-    file_name = "Operaciones_conjuntas.xlsx"
+    file_name = "todas_las_operaciones.xlsx"
     path_file = os.path.join(input_path, file_name)
     df_result = pd.read_excel(path_file)
     df_result.set_index(df_result.columns[0], inplace=True)
