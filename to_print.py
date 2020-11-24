@@ -34,6 +34,10 @@ path_settings_file = os.path.join(main_path, settings_file)
 
 
 def print_this():
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+    pd.set_option('display.max_colwidth', -1)
 
     # input_path_file = os.path.join(input_path, file_name)
     # output_path_file = os.path.join(input_path, output_file)
@@ -77,10 +81,7 @@ def print_this():
 
 
 if __name__ == "__main__":
-    pd.set_option('display.max_rows', None)
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.width', None)
-    pd.set_option('display.max_colwidth', -1)
+
     result = print_this()
     print(result)
 
