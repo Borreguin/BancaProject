@@ -205,3 +205,36 @@ def search_unique_value_conjunta(a_buscar, log_fail, acc_id, linea):
             return False, "estructura incorrecta"
         val = a_buscar
         return True, val
+
+
+def find_partial_of_them(to_check, reference):
+    n = 0
+    for w in to_check:
+        if w in reference:
+            n += 1
+    return n >= 2
+
+
+def convert_str_and_find_partial_of_them(str_to_check, reference):
+    if isinstance(str_to_check, tuple):
+        str_to_check = " ".join(str_to_check)
+    str_to_check = str_to_check.replace(".", "")
+    str_to_check = str_to_check.strip()
+    to_check = str_to_check.split(" ")
+    return find_partial_of_them(to_check, reference)
+
+
+def parse_to_complete_names(partial_names, complete_names):
+    result = list()
+    if not isinstance(partial_names, list):
+        partial_names = [partial_names]
+    for partial in partial_names:
+        not_found = True
+        for complete in complete_names:
+            if convert_str_and_find_partial_of_them(partial, complete):
+                result.append(complete)
+                not_found = False
+                break
+        if not_found:
+            result.append(None)
+    return result

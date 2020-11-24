@@ -37,3 +37,5 @@ exp_operaciones = "OP_EXP"
 
 exp_list = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta, exp_f_individual,
             exp_f_conjunta, exp_operaciones]
+
+co_nombre = "nombre"
