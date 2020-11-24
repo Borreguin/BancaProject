@@ -46,8 +46,8 @@ def print_this():
     # set first column as index
     df.set_index([co_secuencial], inplace=True)
 
-    file_name = "todas_las_operaciones.xlsx"
-    path_file = os.path.join(input_path, file_name)
+    file_name = "salida.xlsx"
+    path_file = os.path.join(output_path, file_name)
     df_result = pd.read_excel(path_file)
     df_result.set_index(df_result.columns[0], inplace=True)
 

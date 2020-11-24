@@ -15,9 +15,11 @@ output_path = os.path.join(project_path, "output")
 sys.path.append(main_path)
 sys.path.append(project_path)
 
+
 from my_lib.util import *
 from constantes import *
 from dto.resultados import Resultado
+from to_print import print_this
 
 log = LogDefaultConfig("app_log.log").logger
 log_good = LogDefaultConfig("app_log_good.log").logger
@@ -25,7 +27,7 @@ log_fail = LogDefaultConfig("app_log_fail.log").logger
 
 # global_variables
 sep = "\t"
-output_file = None
+output_file = "salida.xlsx"
 input_file = "condiciones_preprocesadas.csv"
 condiciones_as_csv = "condiciones_as_csv.csv"
 firmantes_as_csv = "firmantes.csv"
@@ -82,7 +84,10 @@ def process_df(df):
                             else:
                                 print("No considerado")
 
-                    parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
+                    # antigua version
+                    # parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
+                    # pablo version:
+                    parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
                     # if any([True for p in parsed_names if p is None]):
                     #    parsed_names = [None]
 
@@ -124,8 +129,15 @@ def process_df(df):
                                  partial_names.append(g)
                              else:
                                  print("No considerado")
+                    # Antigua versión
+                    # parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
+                    # pablo version:
+                    parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
+                    # ordenar en orden de aparecimiento:
+                    order_dict = order_by_fisrt_ocurrence(parsed_names, lin_total)
+                    sorted_x = sorted(order_dict.items(), key=lambda kv: kv[1])
+                    parsed_names =[ k for k,v  in  sorted_x]
 
-                    parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
                     for name in parsed_names[1:]:
                         result = Resultado()
                         result.firmante_1 = parsed_names[0]
@@ -148,7 +160,63 @@ def process_df(df):
                         result.secuencial = list(df_g[co_secuencial])
                         resp_final.append(result)
 
-                # if exp_f_conjunta in found_matches.keys():
+
+    return resp_final
+
+def main():
+    # file_name = "CONDICIONES.txt"
+    # input_path_file = os.path.join(input_path, file_name)
+    # output_path_file = os.path.join(input_path, output_file)
+    # transform_file(input_path_file, output_path_file)
+    # path_file = os.path.join(input_path, condiciones_as_csv)
+    path_file = os.path.join(input_path, input_file)
+    success, df, msg = read_source_file(path_file, sep=sep)
+    if not success:
+        return False, msg
+    # set first column as index
+    df.set_index(df.columns[0], inplace=True)
+
+    if list(df.columns) != expected_columns:
+        msg = "Las columnas del archivo no coinciden"
+        return False, msg
+    # preprocesando los casos continue (-->)
+    # success, df = pre_process_df(df)
+    # if not success:
+    #     msg = "No se puede preprocesar los datos"
+    #     return False, msg
+    # df = df.sort_index()
+    # df.index = [ix+2 for ix in df.index]
+    # df.to_csv("condiciones_preprocesadas.csv", sep=sep)
+
+    result = process_df(df)
+    to_save = [r.to_dict() for r in result]
+    df_save = pd.DataFrame(to_save)
+    # df_save.drop_duplicates(subset=["cuenta", "firmante_2"], keep='first', inplace=True)
+
+    path_output_file = os.path.join(output_path, output_file)
+    df_save.to_excel(path_output_file)
+    print_this()
+
+
+
+if __name__ == "__main__":
+    result = main()
+    print(result)
+
+        # para saber cuantas operaciones se van a realizar:
+        # success, match1 = search_match(lin_total, reg_ex_list[exp_chk_desde])
+        # success, match2 = search_match(lin_total, reg_ex_list[exp_chk_hasta])
+        # success, match3 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
+        # success, match4 = search_match(lin_total, reg_ex_list[exp_monto_desde])
+        # success, match5 = search_match(lin_total, reg_ex_list[exp_monto_hasta])
+        # success, match6 = search_match(lin_total, reg_ex_list[exp_f_individual])
+        # success, match7 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
+        # success, match8 = search_match(lin_total, reg_ex_list[exp_operaciones])
+        # t_p = [match1, match2, match3, match4, match5, match6, match7, match8]
+        # t_p = "\n".join([str(t) for t in t_p])
+
+
+ # if exp_f_conjunta in found_matches.keys():
                 #     parsed_names = parse_to_complete_names(found_matches[exp_f_conjunta][0], list(df_firm_filter[co_nombre]))
                 #     if any([True for p in parsed_names if p is None]):
                 #         print("firmantes no coincidentes")
@@ -226,53 +294,3 @@ def process_df(df):
 
         # Si se encuentran cheques, entonces tomarlos
         # como separadores
-
-    return resp_final
-
-def main():
-    # file_name = "CONDICIONES.txt"
-    # input_path_file = os.path.join(input_path, file_name)
-    # output_path_file = os.path.join(input_path, output_file)
-    # transform_file(input_path_file, output_path_file)
-    # path_file = os.path.join(input_path, condiciones_as_csv)
-    path_file = os.path.join(input_path, input_file)
-    success, df, msg = read_source_file(path_file, sep=sep)
-    if not success:
-        return False, msg
-    # set first column as index
-    df.set_index(df.columns[0], inplace=True)
-
-    if list(df.columns) != expected_columns:
-        msg = "Las columnas del archivo no coinciden"
-        return False, msg
-    # preprocesando los casos continue (-->)
-    # success, df = pre_process_df(df)
-    # if not success:
-    #     msg = "No se puede preprocesar los datos"
-    #     return False, msg
-    # df = df.sort_index()
-    # df.index = [ix+2 for ix in df.index]
-    # df.to_csv("condiciones_preprocesadas.csv", sep=sep)
-
-    result = process_df(df)
-    to_save = [r.to_dict() for r in result]
-    df_save = pd.DataFrame(to_save)
-    # df_save.drop_duplicates(subset=["cuenta", "firmante_2"], keep='first', inplace=True)
-    df_save.to_excel("todas_las_operaciones.xlsx")
-
-
-if __name__ == "__main__":
-    result = main()
-    print(result)
-
-        # para saber cuantas operaciones se van a realizar:
-        # success, match1 = search_match(lin_total, reg_ex_list[exp_chk_desde])
-        # success, match2 = search_match(lin_total, reg_ex_list[exp_chk_hasta])
-        # success, match3 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
-        # success, match4 = search_match(lin_total, reg_ex_list[exp_monto_desde])
-        # success, match5 = search_match(lin_total, reg_ex_list[exp_monto_hasta])
-        # success, match6 = search_match(lin_total, reg_ex_list[exp_f_individual])
-        # success, match7 = search_match(lin_total, reg_ex_list[exp_f_conjunta])
-        # success, match8 = search_match(lin_total, reg_ex_list[exp_operaciones])
-        # t_p = [match1, match2, match3, match4, match5, match6, match7, match8]
-        # t_p = "\n".join([str(t) for t in t_p])

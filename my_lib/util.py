@@ -215,6 +215,16 @@ def find_partial_of_them(to_check, reference):
     return n >= 2
 
 
+def find_strict_of_them(to_check, reference):
+    n = 0
+    if isinstance(to_check, str):
+        to_check = to_check.split(" ")
+    for w in to_check:
+        if w in reference:
+            n += 1
+    return n >= len(to_check)/2
+
+
 def convert_str_and_find_partial_of_them(str_to_check, reference):
     if isinstance(str_to_check, tuple):
         str_to_check = " ".join(str_to_check)
@@ -238,3 +248,32 @@ def parse_to_complete_names(partial_names, complete_names):
         if not_found:
             result.append(None)
     return result
+
+def match_string_list_in_linea(str_list, linea):
+    resp = list()
+    for w in str_list:
+        success = find_strict_of_them(w, linea)
+        if success:
+            resp.append(w)
+
+    return resp
+
+def find_strict_of_them_and_position(to_check, reference):
+    n = 0
+    min = 0
+    if isinstance(to_check, str):
+        to_check = to_check.split(" ")
+    for w in to_check:
+        if w in reference:
+            n += 1
+            min = (min + reference.find(w))/2
+    return n >= len(to_check)/2, min
+
+
+def order_by_fisrt_ocurrence(str_name_list, linea):
+    resp = dict()
+    for name in str_name_list:
+        success, avg_position = find_strict_of_them_and_position(name, linea)
+        if success:
+            resp[name] = avg_position
+    return resp
