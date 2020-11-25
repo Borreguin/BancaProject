@@ -39,7 +39,7 @@ def print_this():
     pd.set_option('display.max_rows', None)
     pd.set_option('display.max_columns', None)
     pd.set_option('display.width', None)
-    pd.set_option('display.max_colwidth', -1)
+    pd.set_option('display.max_colwidth', 1)
 
     # input_path_file = os.path.join(input_path, file_name)
     # output_path_file = os.path.join(input_path, output_file)

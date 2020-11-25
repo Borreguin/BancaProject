@@ -1,13 +1,9 @@
 import traceback
 
 import pandas as pd
-import os
-import sys
 import re
 import codecs
-
 import os, sys
-
 from constantes import *
 
 # añadiendo a sys el path del proyecto:
@@ -215,16 +211,32 @@ def find_partial_of_them(to_check, reference):
     return n >= 2
 
 
-def find_strict_of_them(to_check, reference):
+# def find_strict_of_them(to_check, reference):
+#     n = 0
+#     if isinstance(to_check, str):
+#         to_check = to_check.split(" ")
+#     for w in to_check:
+#         if len(w) < 3:
+#             continue
+#         if w in reference:
+#             n += 1
+#     return n >= len(to_check)/2
+
+
+def find_strict_of_them(to_check, reference:str, tr=True):
     n = 0
     if isinstance(to_check, str):
         to_check = to_check.split(" ")
+    # Define if there is similarity between them:
     for w in to_check:
         if len(w) < 3:
             continue
         if w in reference:
             n += 1
-    return n >= len(to_check)/2
+    if tr:
+        return n > len(to_check)/2
+    else:
+        return n >= len(to_check)/2
 
 
 def convert_str_and_find_partial_of_them(str_to_check, reference):
@@ -251,14 +263,26 @@ def parse_to_complete_names(partial_names, complete_names):
             result.append(None)
     return result
 
+
 def match_string_list_in_linea(str_list, linea):
     resp = list()
+    r = 0
+    ws = 0
+    for ix in str_list:
+        words = ix.split(" ")
+        ws += len(words)
+        excl = "".join([x for x in str_list if ix != x])
+        for w in words:
+            r += (w in excl)
+    if ws > 0:
+        r = r/ws
     for w in str_list:
-        success = find_strict_of_them(w, linea)
+        success = find_strict_of_them(w, linea, r >= 0.4)
         if success:
             resp.append(w)
 
     return resp
+
 
 def find_strict_of_them_and_position(to_check, reference):
     n = 0

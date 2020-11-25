@@ -51,13 +51,10 @@ def process_df(df):
         lin_total = " ".join(df_g[co_descripcion])
         # encuentra todos los macthces posibles para todas las reglas:
         found_matches = search_matches(lin_total, exp_list, reg_ex_list)
-        # print("*************************ACCOUNT*********************")
-        # print(f"Account {acc_id}")
-        # pretty(found_matches, 2)
-        # [print(li) for li in df_g[co_descripcion]]
-        # caso simple operaciones = 1 y cheque desde = 1
+        # CASO 1A y 1B (el número de operaciones y el número de cheques es 1)
         if exp_chk_desde in found_matches.keys() and exp_operaciones in found_matches.keys():
             if len(found_matches[exp_operaciones]) == 1 and len(found_matches[exp_chk_desde]) == 1:
+                # filtrar data set de firmantes
                 mask = (df_firm[c_0] == acc_id[0]) & (df_firm[c_1] == acc_id[1])
                 df_firm_filter = df_firm[mask]
 
@@ -68,6 +65,7 @@ def process_df(df):
                 else:
                     operacion = "AMBIGUO"
 
+                # CASO 1A: Firma individual
                 if operacion == "FIRMA INDIVIDUAL" and exp_f_individual in found_matches.keys():
                     if len(found_matches[exp_f_individual]) == 1:
                         partial_names = found_matches[exp_f_individual][0]
@@ -87,17 +85,13 @@ def process_df(df):
                     # parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
                     # pablo version:
                     parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
-                    # if any([True for p in parsed_names if p is None]):
-                    #    parsed_names = [None]
-
+                    #
                     for name in parsed_names:
                         result = Resultado()
                         result.firmante_1 = name
                         if name is None:
                             result.observacion = "No fue posible detectar nombre firmante"
                         result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
-                        if result.cuenta == "XXXXXX220 2279":
-                            print("XXXXXX220 2279")
                         result.condicion = operacion
                         attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
                         evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
@@ -108,11 +102,13 @@ def process_df(df):
                                     setattr(result, attr, value)
                             except Exception as e:
                                 print("problema")
-                        result.fecha_desde = list(df_g[co_fecha_inicio])
-                        result.fecha_hasta = list(df_g[co_fecha_inicio])
+                        result.fecha_desde = list(df_g[co_fecha_inicio])[0]
+                        result.fecha_hasta = list(df_g[co_fecha_inicio])[0]
                         result.secuencial = list(df_g[co_secuencial])
                         resp_final.append(result)
+                # FIN CASO 1A
 
+                # CASO 1B: Firmas Conjuntas
                 if operacion == "FIRMAS CONJUNTAS" and exp_f_conjunta in found_matches.keys():
                     if len(found_matches[exp_f_conjunta]) == 1:
                         partial_names = list()
@@ -156,12 +152,13 @@ def process_df(df):
                                     setattr(result, attr, value)
                             except Exception as e:
                                 print("problema")
-                        result.fecha_desde = list(df_g[co_fecha_inicio])
-                        result.fecha_hasta = list(df_g[co_fecha_inicio])
+                        result.fecha_desde = list(df_g[co_fecha_inicio])[0]
+                        result.fecha_hasta = list(df_g[co_fecha_inicio])[0]
                         result.secuencial = list(df_g[co_secuencial])
                         resp_final.append(result)
+                # FIN CASO 1B
 
-        # caso grupos pequeños:
+        # CASO 1C caso grupos pequeños:
         elif len(df_g.index) <= 2:
             mask = (df_firm[c_0] == acc_id[0]) & (df_firm[c_1] == acc_id[1])
             df_firm_filter = df_firm[mask]
@@ -172,9 +169,9 @@ def process_df(df):
             parsed_names = [k for k, v in sorted_x]
 
             if len(parsed_names) == 1 and parsed_names[0] is None:
-                result.observacion = "No es posible encontrar el firmante"
+                observacion = "No es posible encontrar el firmante"
             elif len(parsed_names) == 0:
-                result.observacion = "No es posible encontrar el firmante"
+                observacion = "No es posible encontrar el firmante"
                 parsed_names = [None]
 
             operacion = None
@@ -192,7 +189,7 @@ def process_df(df):
             for name in parsed_names:
                 result = Resultado()
                 result.condicion = operacion
-
+                result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
                 if operacion == "FIRMAS CONJUNTAS":
                     result.firmante_1 = firm1
                     result.firmante_2 = name
@@ -203,8 +200,7 @@ def process_df(df):
                     result.observacion = "No es posible encontrar el firmante"
                 elif len(parsed_names) == 0:
                     result.observacion = "No es posible encontrar el firmante"
-                else:
-                    print(parsed_names)
+
                 attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
                 evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
                 for attr, this_exp in zip(attrs, evals):
@@ -214,8 +210,8 @@ def process_df(df):
                             setattr(result, attr, value)
                     except Exception as e:
                         print("problema")
-                result.fecha_desde = list(df_g[co_fecha_inicio])
-                result.fecha_hasta = list(df_g[co_fecha_inicio])
+                result.fecha_desde = list(df_g[co_fecha_inicio])[0]
+                result.fecha_hasta = list(df_g[co_fecha_inicio])[0]
                 result.secuencial = list(df_g[co_secuencial])
                 resp_final.append(result)
 
