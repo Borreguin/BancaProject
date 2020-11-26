@@ -8,6 +8,9 @@ import codecs
 
 # añadiendo a sys el path del proyecto:
 # permitiendo el uso de librerías propias:
+from my_lib.DefaultLogClass import DefaultConfig
+from my_lib.subrutinas import *
+
 main_path = os.path.dirname(os.path.abspath(__file__))
 project_path = main_path
 input_path = os.path.join(project_path, "input")
@@ -21,8 +24,10 @@ from dto.resultados import Resultado
 from to_print import print_this
 
 log = LogDefaultConfig("app_log.log").logger
-log_good = LogDefaultConfig("app_log_good.log").logger
-log_fail = LogDefaultConfig("app_log_fail.log").logger
+log_good = DefaultConfig("app_log_good.log").logger
+log_fail = DefaultConfig("app_log_fail.log").logger
+log_caso_new_case = LogDefaultConfig("nuevos_casos.log").logger
+
 
 # global_variables
 sep = "\t"
@@ -32,6 +37,11 @@ condiciones_as_csv = "condiciones_as_csv.csv"
 firmantes_as_csv = "firmantes.csv"
 settings_file = "Config.xlsx"
 path_settings_file = os.path.join(main_path, settings_file)
+# configuración de logeo:
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', 1)
 
 
 def process_df(df):
@@ -55,165 +65,148 @@ def process_df(df):
         if exp_chk_desde in found_matches.keys() and exp_operaciones in found_matches.keys():
             if len(found_matches[exp_operaciones]) == 1 and len(found_matches[exp_chk_desde]) == 1:
                 # filtrar data set de firmantes
+                success, resp = case_operaciones_chk_1(acc_id, df_g, df_firm, found_matches, lin_total)
+                if success:
+                    resp_final += resp
+                    continue
+                # else:
+                #     # está sin identificar  creo que en este caso no debe ecistir este else
+                #     log_fail.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                #     log_fail.info(df_g)
+
+        # CASO 1C caso grupos pequeños:
+        elif exp_operaciones in found_matches.keys():
+            if len(df_g.index) <= 2 and len(found_matches[exp_operaciones]) == 1:
+                c_0, c_1 = df_firm.columns[0], df_firm.columns[1]
+                mask = (df_firm[c_0] == acc_id[0]) & (df_firm[c_1] == acc_id[1])
+                df_firm_filter = df_firm[mask]
+                success, resp = case_2_df_smaller_than_2(acc_id, df_g, df_firm, found_matches, lin_total)
+                if success:
+                    resp_final += resp
+                    continue
+                elif any([(ex in found_matches.keys()) for ex in [exp_f_conjunta, exp_f_individual, exp_monto_desde,
+                                                                  exp_chk_hasta]]):
+                    # CASOS A IMPLEMENTAR A FUTURO
+                    log_caso_new_case.info(f"\n########## 2 x #######")
+                    log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                    log_caso_new_case.info(df_g)
+                else:
+                    result = Resultado()
+                    result.condicion = found_matches[exp_operaciones][0]
+                    result.fecha_desde = list(df_g[co_fecha_inicio])[0]
+                    result.fecha_hasta = list(df_g[co_fecha_fin])[0]
+                    result.secuencial = list(df_g[co_secuencial])
+                    result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
+                    result.observacion = "Datos insuficientes"
+                    resp_final.append(result)
+                    #log_fail.info(f"\n########## CASO INCOMPLETO #######")
+                    # log_fail.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                    # log_fail.info(df_g)
+
+                    log_fail.info(f"\n-------------> Account: {c_0} {c_1}")
+                    log_fail.info(df_g[co_descripcion])
+                    log_fail.info(f"---> Firmantes:")
+                    log_fail.info(df_firm_filter[co_nombre].to_string(index=False))
+                    log_fail.info(f"---> Result:")
+                    df_aux = pd.DataFrame([r.to_dict() for r in [result]])
+                    log_fail.info(df_aux[heads].to_string(index=False))
+
+            # caso grupo pequeño en que existen dos operaciones y en la segunda frase se tiene "DEMAS ALTERNANTES"
+            elif len(df_g.index) <= 2 and len(found_matches[exp_operaciones]) == 2:
+                c_0, c_1 = df_firm.columns[0], df_firm.columns[1]
                 mask = (df_firm[c_0] == acc_id[0]) & (df_firm[c_1] == acc_id[1])
                 df_firm_filter = df_firm[mask]
 
-                if "CONJ" in found_matches[exp_operaciones][0]:
-                    operacion = "FIRMAS CONJUNTAS"
-                elif "NDIV" in found_matches[exp_operaciones][0]:
-                    operacion = "FIRMA INDIVIDUAL"
-                else:
-                    operacion = "AMBIGUO"
-
-                # CASO 1A: Firma individual
-                if operacion == "FIRMA INDIVIDUAL" and exp_f_individual in found_matches.keys():
-                    if len(found_matches[exp_f_individual]) == 1:
-                        partial_names = found_matches[exp_f_individual][0]
-                    else:
-                        partial_names = list()
-                        for g in found_matches[exp_f_individual]:
-                            if isinstance(g, tuple):
-                                partial_names += list(g)
-                            elif isinstance(g, list):
-                                continue
-                            elif isinstance(g, str):
-                                partial_names.append(g)
-                            else:
-                                print("No considerado")
-
-                    # antigua version
-                    # parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
-                    # pablo version:
+                if " DEMAS " in lin_total:
+                    sub_lineas = lin_total.split(" DEMAS ")
                     parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
-                    #
-                    for name in parsed_names:
-                        result = Resultado()
-                        result.firmante_1 = name
-                        if name is None:
-                            result.observacion = "No fue posible detectar nombre firmante"
-                        result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
-                        result.condicion = operacion
-                        attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
-                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
-                        for attr, this_exp in zip(attrs, evals):
-                            try:
-                                if this_exp in found_matches.keys():
-                                    value = str(found_matches[this_exp][0][1]).replace(".", "")
-                                    setattr(result, attr, value)
-                            except Exception as e:
-                                print("problema")
-                        result.fecha_desde = list(df_g[co_fecha_inicio])[0]
-                        result.fecha_hasta = list(df_g[co_fecha_inicio])[0]
-                        result.secuencial = list(df_g[co_secuencial])
-                        resp_final.append(result)
-                # FIN CASO 1A
-
-                # CASO 1B: Firmas Conjuntas
-                if operacion == "FIRMAS CONJUNTAS" and exp_f_conjunta in found_matches.keys():
-                    if len(found_matches[exp_f_conjunta]) == 1:
-                        partial_names = list()
-                        for partial in found_matches[exp_f_conjunta][0]:
-                            partial = partial.split(" Y ")
-                            partial_names += partial
-                    else:
-                        partial_names = list()
-                        for g in found_matches[exp_f_conjunta]:
-                            if isinstance(g, tuple):
-                                partial_names += list(g)
-                            elif isinstance(g, list):
-                                continue
-                            elif isinstance(g, str):
-                                partial_names.append(g)
-                            else:
-                                print("No considerado")
-                    # Antigua versión
-                    # parsed_names = parse_to_complete_names(partial_names, list(df_firm_filter[co_nombre]))
-                    # pablo version:
-                    parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
-                    # ordenar en orden de aparecimiento:
                     order_dict = order_by_fisrt_ocurrence(parsed_names, lin_total)
                     sorted_x = sorted(order_dict.items(), key=lambda kv: kv[1])
                     parsed_names = [k for k, v in sorted_x]
 
-                    for name in parsed_names[1:]:
-                        result = Resultado()
-                        result.firmante_1 = parsed_names[0]
-                        result.firmante_2 = name
-                        if name is None:
-                            result.observacion = "No fue posible detectar nombre firmante"
-                        result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
-                        result.condicion = operacion
-                        attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
-                        evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
-                        for attr, this_exp in zip(attrs, evals):
-                            try:
-                                if this_exp in found_matches.keys():
-                                    value = str(found_matches[this_exp][0][1]).replace(".", "")
-                                    setattr(result, attr, value)
-                            except Exception as e:
-                                print("problema")
-                        result.fecha_desde = list(df_g[co_fecha_inicio])[0]
-                        result.fecha_hasta = list(df_g[co_fecha_inicio])[0]
-                        result.secuencial = list(df_g[co_secuencial])
-                        resp_final.append(result)
-                # FIN CASO 1B
+                    for ix, sub_linea in enumerate(sub_lineas):
+                        found_matches_demas = search_matches(sub_linea, exp_list, reg_ex_list)
+                        if ix == 0:
+                            if exp_chk_desde in found_matches_demas.keys() and exp_operaciones in found_matches_demas.keys():
+                                if len(found_matches_demas[exp_operaciones]) == 1 and len(found_matches_demas[exp_chk_desde]) == 1:
+                                    success, resp = case_operaciones_chk_1(acc_id, df_g, df_firm, found_matches, lin_total)
+                                    if success:
+                                        # caso 1A y 1B (con desde cheque)
+                                        resp_final += resp
+                                        continue
+                                    else:
+                                        log_caso_new_case.info(f"CASO 1D no determinado")
+                                        log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                                        log_caso_new_case.info(df_g)
+                            else:
+                                success, resp = case_2_df_smaller_than_2(acc_id, df_g, df_firm, found_matches,
+                                                                       lin_total)
+                                if success:
+                                    # caso 1C (filtrando la mejor información que se tiene)
+                                    resp_final += resp
+                                    continue
+                                else:
+                                    log_caso_new_case.info(f"CASO 1E no determinado")
+                                    log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                                    log_caso_new_case.info(df_g)
 
-        # CASO 1C caso grupos pequeños:
-        elif len(df_g.index) <= 2:
-            mask = (df_firm[c_0] == acc_id[0]) & (df_firm[c_1] == acc_id[1])
-            df_firm_filter = df_firm[mask]
-            parsed_names = match_string_list_in_linea(list(df_firm_filter[co_nombre]), lin_total)
+                        if is_alternates(sub_linea) and exp_f_conjunta in found_matches_demas.keys():
+                            # CASO 2A: Caso alternantes:
 
-            order_dict = order_by_fisrt_ocurrence(parsed_names, lin_total)
-            sorted_x = sorted(order_dict.items(), key=lambda kv: kv[1])
-            parsed_names = [k for k, v in sorted_x]
+                            parsed_names_sub = match_string_list_in_linea(list(df_firm_filter[co_nombre]), sub_linea)
+                            if len(parsed_names_sub) > 0:
+                                log_caso_new_case.info(f"CASO 2B no determinado")
+                                log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                                log_caso_new_case.info(df_g)
+                            else:
+                                # CASO 2C
+                                firm_principal = parsed_names[0]
+                                alternante_firmantes = [f for f in list(df_firm_filter[co_nombre]) if firm_principal != f]
+                                operacion = None
+                                if exp_operaciones in found_matches_demas.keys():
+                                    if "CONJ" in found_matches_demas[exp_operaciones][0]:
+                                        operacion = "FIRMAS CONJUNTAS"
+                                    elif "NDIV" in found_matches_demas[exp_operaciones][0]:
+                                        operacion = "FIRMA INDIVIDUAL"
+                                    else:
+                                        operacion = "AMBIGUO"
+                                success, resp = fill_values_case_2_b(firm_principal, alternante_firmantes,
+                                                                     found_matches_demas, operacion, acc_id, df_g)
+                                if success:
+                                    # caso 2C (filtrando la mejor información que se tiene)
+                                    resp_final += resp
+                                    log_good.info(f"\n-------------> Account: {c_0} {c_1}")
+                                    log_good.info(df_g[co_descripcion])
+                                    log.info(f"---> Firmantes:")
+                                    log_good.info(df_firm_filter[co_nombre].to_string(index=False))
+                                    df_aux = pd.DataFrame([r.to_dict() for r in resp])
+                                    log.info(f"---> Result:")
+                                    log_good.info(df_aux[heads].to_string(index=False))
 
-            if len(parsed_names) == 1 and parsed_names[0] is None:
-                observacion = "No es posible encontrar el firmante"
-            elif len(parsed_names) == 0:
-                observacion = "No es posible encontrar el firmante"
-                parsed_names = [None]
 
-            operacion = None
-            firm1 = None
-            if exp_operaciones in found_matches.keys():
-                if "CONJ" in found_matches[exp_operaciones][0]:
-                    operacion = "FIRMAS CONJUNTAS"
-                    firm1 = parsed_names[0]
-                    parsed_names = parsed_names[1:]
-                elif "NDIV" in found_matches[exp_operaciones][0]:
-                    operacion = "FIRMA INDIVIDUAL"
-                else:
-                    operacion = "AMBIGUO"
+                                    continue
+                                else:
+                                    log_caso_new_case.info(f"CASO 1E no determinado")
+                                    log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                                    log_caso_new_case.info(df_g)
 
-            for name in parsed_names:
-                result = Resultado()
-                result.condicion = operacion
-                result.cuenta = str(acc_id[0]) + " " + str(acc_id[1])
-                if operacion == "FIRMAS CONJUNTAS":
-                    result.firmante_1 = firm1
-                    result.firmante_2 = name
-                else:
-                    result.firmante_1 = name
+            elif len(df_g.index) <= 3 and len(found_matches[exp_operaciones]) == 3:
+                #Caso 3 A
+                log_caso_new_case.info(f"\n########## CASO 3 A #######")
+                log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                log_caso_new_case.info(df_g)
 
-                if len(parsed_names) == 1 and parsed_names[0] is None:
-                    result.observacion = "No es posible encontrar el firmante"
-                elif len(parsed_names) == 0:
-                    result.observacion = "No es posible encontrar el firmante"
+            elif len(df_g.index) <= 4 and len(found_matches[exp_operaciones]) == 4:
+                #Caso 4 A
+                log_caso_new_case.info(f"\n########## CASO 4 A #######")
+                log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                log_caso_new_case.info(df_g)
 
-                attrs = ["cheque_desde", "cheque_hasta", "monto_desde", "monto_hasta"]
-                evals = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta]
-                for attr, this_exp in zip(attrs, evals):
-                    try:
-                        if this_exp in found_matches.keys():
-                            value = str(found_matches[this_exp][0][1]).replace(".", "")
-                            setattr(result, attr, value)
-                    except Exception as e:
-                        print("problema")
-                result.fecha_desde = list(df_g[co_fecha_inicio])[0]
-                result.fecha_hasta = list(df_g[co_fecha_inicio])[0]
-                result.secuencial = list(df_g[co_secuencial])
-                resp_final.append(result)
+            elif len(df_g.index) <= 5 and len(found_matches[exp_operaciones]) == 5:
+                #Caso 5 A
+                log_caso_new_case.info(f"\n########## CASO 5 A #######")
+                log_caso_new_case.info(f"\n-----> Account: {acc_id[0]} {acc_id[1]}")
+                log_caso_new_case.info(df_g)
 
     return resp_final
 
@@ -286,7 +279,7 @@ if __name__ == "__main__":
 #     separadores = [valor for text, valor in found_matches[exp_chk_desde]]
 #     for separador in separadores:
 #         if len(separador)==0:
-#             log_fail.error(str(acc_id)+str(separadores))
+#             log_fail.info(str(acc_id)+str(separadores))
 #             continue
 #         if len(found_matches[exp_operaciones])==1:
 #             lineas = [lin_total]

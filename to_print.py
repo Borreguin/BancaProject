@@ -16,7 +16,6 @@ output_path = os.path.join(project_path, "output")
 sys.path.append(main_path)
 sys.path.append(project_path)
 
-heads = ["secuencial","cheque_desde","cheque_hasta","firmante_1" ,"firmante_2","condicion", "fecha_desde","fecha_hasta","monto_desde", "monto_hasta","observacion"]
 
 from my_lib.util import *
 from constantes import *
@@ -33,13 +32,12 @@ condiciones_as_csv = "condiciones_as_csv.csv"
 firmantes_as_csv = "firmantes.csv"
 settings_file = "Config.xlsx"
 path_settings_file = os.path.join(main_path, settings_file)
-
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', 1)
 
 def print_this():
-    pd.set_option('display.max_rows', None)
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.width', None)
-    pd.set_option('display.max_colwidth', 1)
 
     # input_path_file = os.path.join(input_path, file_name)
     # output_path_file = os.path.join(input_path, output_file)

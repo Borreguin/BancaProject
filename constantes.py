@@ -35,6 +35,8 @@ exp_f_individual = "F_INDIVIDUAL_EXP"
 exp_f_conjunta = "F_CONJUNTA_EXP"
 exp_operaciones = "OP_EXP"
 
+heads = ["secuencial","cheque_desde","cheque_hasta","firmante_1" ,"firmante_2","condicion", "fecha_desde","fecha_hasta","monto_desde", "monto_hasta","observacion"]
+
 exp_list = [exp_chk_desde, exp_chk_hasta, exp_monto_desde, exp_monto_hasta, exp_f_individual,
             exp_f_conjunta, exp_operaciones]
 

@@ -303,3 +303,7 @@ def order_by_fisrt_ocurrence(str_name_list, linea):
         if success:
             resp[name] = avg_position
     return resp
+
+
+def is_alternates(sub_linea):
+    return "ALTERNA" in sub_linea
